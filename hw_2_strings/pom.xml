@@ -17,14 +17,17 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>stringutils</groupId>
             <artifactId>string_utils</artifactId>
             <version>1.0</version>
-            <scope>compile</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/libs/string_utils.jar</systemPath>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>hw_2_strings</finalName>
         <plugins>
