@@ -23,8 +23,6 @@
             <groupId>stringutils</groupId>
             <artifactId>string_utils</artifactId>
             <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/libs/string_utils.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -57,6 +55,26 @@
                                     <mainClass>ua.com.alevel.application.Main</mainClass>
                                 </transformer>
                             </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>stringutils</groupId>
+                            <artifactId>string_utils</artifactId>
+                            <version>1.0</version>
+                            <packaging>jar</packaging>
+                            <file>${project.basedir}/src/main/resources/libs/string_utils.jar</file>
                         </configuration>
                     </execution>
                 </executions>
