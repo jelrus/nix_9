@@ -33,7 +33,7 @@ public class UserDB {
     }
 
     public void update(User user){
-        User current = findById(user.getId());
+        User current = findById(user.getId()); // а если вернется null ?
         current.setName(user.getName());
         current.setLastName(user.getLastName());
         current.setAge(user.getAge());

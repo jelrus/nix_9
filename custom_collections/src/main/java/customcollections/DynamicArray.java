@@ -1,12 +1,11 @@
 package customcollections;
 
 public class DynamicArray<E> {
+
     private final int INIT_SIZE = 10;
     private final int CUT_RATE = 4;
     private Object[] array = new Object[INIT_SIZE];
     private int pointer = 0;
-
-    public DynamicArray(){}
 
     public void add(E item) {
         if(pointer == array.length-1)

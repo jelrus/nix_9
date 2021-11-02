@@ -6,8 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 public class InputUtils {
+
     public static BufferedReader inputStream = new BufferedReader(new InputStreamReader(System.in));
 
     public static String returnLine() throws IOException {

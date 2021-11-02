@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.util.Locale;
 
 public class Menu {
+
     public static void runMenu() throws IOException, ParseException {
         Messages.returnMainMenuText();
         String menuOption = InputUtils.returnLine().toLowerCase(Locale.ROOT);

@@ -1,6 +1,7 @@
 package ua.com.alevel.console.messages;
 
 public class ErrorMessages {
+
     public static void getInputErrorMessage() {
         System.out.print("""
                 ------------------ Error Message -------------------
