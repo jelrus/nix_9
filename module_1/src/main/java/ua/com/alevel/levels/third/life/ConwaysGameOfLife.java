@@ -103,9 +103,9 @@ public class ConwaysGameOfLife {
             }
             for (int horizontalPoint : verticalPoint) {
                 if (horizontalPoint == 1) {
-                    universeBuilder.append('[').append('0').append(']');
-                } else {
                     universeBuilder.append('[').append('+').append(']');
+                } else {
+                    universeBuilder.append('[').append(' ').append(']');
                 }
             }
         }
