@@ -1,6 +1,7 @@
 package ua.com.alevel.console.messages;
 
 public class Messages {
+
     public static void returnMainMenuText() {
         System.out.print(
                 """

@@ -10,10 +10,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Log{
+
     public static ArrayList<Entry> log = new ArrayList<>();
 
-    private Log() {
-    }
+    private Log() { }
 
     public static void showLog() throws IOException, ParseException {
         if (Log.checkLog(log)) {

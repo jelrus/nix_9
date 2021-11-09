@@ -14,8 +14,7 @@ public class UnifiedLog {
 
     public static ArrayList<Entry> unifiedLog = new ArrayList<>();
 
-    private UnifiedLog() {
-    }
+    private UnifiedLog() { }
 
     public static void showUnifiedLog() throws IOException, ParseException {
         unifiedLog.addAll(ErrorLog.errorLog);

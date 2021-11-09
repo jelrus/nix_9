@@ -1,14 +1,12 @@
 package ua.com.alevel.entity;
 
 public class User {
+
     private String id;
     private String name;
     private String lastName;
     private int age;
     private String email;
-
-    public User(){
-    }
 
     public String getId() {
         return id;
