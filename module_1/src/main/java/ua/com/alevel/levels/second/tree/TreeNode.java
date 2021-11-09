@@ -26,11 +26,11 @@ public class TreeNode {
 
     public StringBuilder treeNodeToModel(StringBuilder prefix, boolean isTail, StringBuilder sb) {
         if (right != null) {
-            right.treeNodeToModel(new StringBuilder().append(prefix).append(isTail ? "│   " : "    "), false, sb);
+            right.treeNodeToModel(new StringBuilder().append(prefix).append(isTail ? "|   " : "    "), false, sb);
         }
-        sb.append(prefix).append(isTail ? "└── " : "┌── ").append(value).append("\n");
+        sb.append(prefix).append(isTail ? "L__ " : "г--- ").append(value).append("\n");
         if (left != null) {
-            left.treeNodeToModel(new StringBuilder().append(prefix).append(isTail ? "    " : "│   "), true, sb);
+            left.treeNodeToModel(new StringBuilder().append(prefix).append(isTail ? "    " : "|   "), true, sb);
         }
         return sb;
     }
