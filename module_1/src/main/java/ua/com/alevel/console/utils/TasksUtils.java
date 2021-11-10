@@ -3,7 +3,6 @@ package ua.com.alevel.console.utils;
 import ua.com.alevel.console.menus.Menu;
 import ua.com.alevel.console.messages.ErrorMessages;
 import ua.com.alevel.console.messages.MenuMessages;
-import ua.com.alevel.levels.first.horse.ChessBoard;
 import ua.com.alevel.levels.first.horse.ChessField;
 import ua.com.alevel.levels.first.horse.HorseMove;
 import ua.com.alevel.levels.first.numbers.UniqueDigits;
@@ -43,8 +42,8 @@ public class TasksUtils {
     public static void startHorseMoving() throws IOException, ParseException {
         MenuMessages.returnHorseInputText();
         String basePosition = InputUtils.returnLine();
-        if (InputUtils.checkEmpty(basePosition) && InputUtils.checkBlank(basePosition)
-                && InputUtils.checkRange(basePosition)) {
+        if (InputUtils.checkEmpty(basePosition) && InputUtils.checkBlank(basePosition) &&
+                InputUtils.checkRange(basePosition)) {
             ChessField chessField = InputUtils.convertLineToMove(basePosition);
             if (HorseMove.trueMoves.isEmpty() && HorseMove.inRange(chessField)) {
                 MenuMessages.resultHeader();
@@ -63,18 +62,15 @@ public class TasksUtils {
                 ErrorMessages.getNotAvailableMoveErrorMessage();
                 MenuMessages.listOfAvailableMoves();
             }
-        } else if (!InputUtils.checkEmpty(basePosition)) {
-            ErrorMessages.getEmptyLineErrorMessage();
-            startHorseMoving();
-        } else if (!InputUtils.checkBlank(basePosition)) {
-            ErrorMessages.getBlankLineErrorMessage();
-            startHorseMoving();
+        } else if (!InputUtils.checkEmpty(basePosition) && !InputUtils.checkBlank(basePosition)) {
+            stackOfTasks.add(2);
+            Menu.runSubMenu();
         } else if (!InputUtils.checkRange(basePosition)) {
             ErrorMessages.getNotInRangeErrorMessage();
             startHorseMoving();
         }
         stackOfTasks.add(2);
-        Menu.runSubMenu();
+        startHorseMoving();
     }
 
     public static void calculateTriangleSquare() throws IOException, ParseException {
