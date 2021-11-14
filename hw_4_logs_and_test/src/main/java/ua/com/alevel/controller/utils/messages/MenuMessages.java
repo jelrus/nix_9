@@ -8,7 +8,7 @@ import ua.com.alevel.service.implementation.EmployeeServiceImpl;
 public class MenuMessages {
 
     public static void mainMenuText() {
-        System.out.print("""
+        System.out.println("""
                 ------- Main menu -------
                 1. Department menu
                 2. Employee menu
@@ -18,7 +18,7 @@ public class MenuMessages {
     }
 
     public static void departmentMenuText() {
-        System.out.print("""
+        System.out.println("""
                 ---- Department menu ----
                 1. Create department
                 2. Update department
@@ -30,7 +30,7 @@ public class MenuMessages {
     }
 
     public static void optionInput() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Choose option:
                 ____________________________________________________
@@ -38,7 +38,7 @@ public class MenuMessages {
     }
 
     public static void returnBackOption() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Return back to main menu? (Y/n)
                 ____________________________________________________
@@ -46,7 +46,7 @@ public class MenuMessages {
     }
 
     public static void depNameInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter department name:
                 ____________________________________________________
@@ -54,7 +54,7 @@ public class MenuMessages {
     }
 
     public static void depIdInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter department id:
                 ____________________________________________________
@@ -62,7 +62,7 @@ public class MenuMessages {
     }
 
     public static void depNewNameInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter department new name:
                 ____________________________________________________
@@ -103,7 +103,7 @@ public class MenuMessages {
     }
 
     public static void employeeMenuText() {
-        System.out.print("""
+        System.out.println("""
                 ----- Employee menu -----
                 1. Create employee
                 2. Update employee
@@ -115,7 +115,7 @@ public class MenuMessages {
     }
 
     public static void empFirstNameInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's first name:
                 ____________________________________________________
@@ -123,7 +123,7 @@ public class MenuMessages {
     }
 
     public static void empLastNameInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's last name:
                 ____________________________________________________
@@ -131,7 +131,7 @@ public class MenuMessages {
     }
 
     public static void empAgeInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's age:
                 ____________________________________________________
@@ -139,7 +139,7 @@ public class MenuMessages {
     }
 
     public static void empEmailInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's email:
                 ____________________________________________________
@@ -147,7 +147,7 @@ public class MenuMessages {
     }
 
     public static void empSalaryInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's salary:
                 ____________________________________________________
@@ -155,7 +155,7 @@ public class MenuMessages {
     }
 
     public static void empDepartmentsNumberInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 If departments number equals 0 no departments will
                 be assigned!
@@ -166,7 +166,7 @@ public class MenuMessages {
     }
 
     public static void empNewFirstNameInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Old fields won't be changed if input will be empty or
                 blank.
@@ -177,7 +177,7 @@ public class MenuMessages {
     }
 
     public static void empNewLastNameInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's new last name:
                 ____________________________________________________
@@ -185,7 +185,7 @@ public class MenuMessages {
     }
 
     public static void empNewAgeInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's new age:
                 ____________________________________________________
@@ -193,7 +193,7 @@ public class MenuMessages {
     }
 
     public static void empNewEmailInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's new email:
                 ____________________________________________________
@@ -201,7 +201,7 @@ public class MenuMessages {
     }
 
     public static void empNewSalaryInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's new salary:
                 ____________________________________________________
@@ -209,7 +209,7 @@ public class MenuMessages {
     }
 
     public static void empIdInputMessage() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Enter employee's id:
                 ____________________________________________________
@@ -217,7 +217,7 @@ public class MenuMessages {
     }
 
     public static void addOrRemoveOption() {
-        System.out.print("""
+        System.out.println("""
                 --------------------Input window--------------------
                 Add or remove departments? (A/r)
                 ____________________________________________________

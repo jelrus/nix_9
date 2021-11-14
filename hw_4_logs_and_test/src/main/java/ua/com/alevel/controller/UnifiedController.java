@@ -3,6 +3,7 @@ package ua.com.alevel.controller;
 import ua.com.alevel.controller.implementation.DepartmentControllerImpl;
 import ua.com.alevel.controller.implementation.EmployeeControllerImpl;
 import ua.com.alevel.controller.utils.input.InputUtils;
+import ua.com.alevel.controller.utils.messages.ErrorMessages;
 import ua.com.alevel.controller.utils.messages.MenuMessages;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class UnifiedController {
             case "2" -> EMPLOYEE_CONTROLLER.run();
             case "e" -> System.exit(0);
             default -> {
-                System.out.println("Error");
+                ErrorMessages.optionError();
                 run();
             }
         }
