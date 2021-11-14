@@ -1,15 +1,16 @@
 package customcollections;
 
 public class DynamicArray<E> {
-
     private final int INIT_SIZE = 10;
-    private final int CUT_RATE = 4;
     private Object[] array = new Object[INIT_SIZE];
     private int pointer = 0;
 
+    public DynamicArray() {
+    }
+
     public void add(E item) {
-        if(pointer == array.length-1)
-            resize(array.length*2); // увеличу в 2 раза, если достигли границ
+        if (pointer == array.length)
+            resize(array.length * 2);
         array[pointer++] = item;
     }
 
@@ -18,12 +19,12 @@ public class DynamicArray<E> {
     }
 
     public void remove(int index) {
-        for (int i = index; i<pointer; i++)
-            array[i] = array[i+1];
+        if (pointer - index >= 0) System.arraycopy(array, index + 1, array, index, pointer - index);
         array[pointer] = null;
         pointer--;
+        int CUT_RATE = 4;
         if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE)
-            resize(array.length/2);
+            resize(array.length / 2);
     }
 
     public int size() {
@@ -36,12 +37,31 @@ public class DynamicArray<E> {
         array = newArray;
     }
 
+    public boolean contains(E item) {
+        for (Object o : array) {
+            if (o == item) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsOnlyNullObjects() {
+        int counter = 0;
+        for (Object o : array) {
+            if (o == null) {
+                counter++;
+            }
+        }
+        return counter == array.length;
+    }
+
     @Override
     public String toString() {
         StringBuilder dynamicObjectsToString = new StringBuilder();
-        for (int i = 0; i<array.length; i++){
-            if (array[i] != null){
-                dynamicObjectsToString.append(array[i]).append("\n");
+        for (Object o : array) {
+            if (o != null) {
+                dynamicObjectsToString.append(o).append("\n");
             }
         }
         return dynamicObjectsToString.toString();
