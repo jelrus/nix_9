@@ -10,6 +10,10 @@ public class MenuMessages {
     public static void mainMenuMessage() {
         System.out.println("""
                 --------------------- Unit 5 - Collection ---------------------
+                This MathSet implementation allows to use not unique items and
+                null items (not in console).
+                To achieve items uniqueness use one of set methods (6).
+                ---------------------------------------------------------------
                 Choose option by entering following numbers:
                 -------------------------- Operations -------------------------
                 1 - Create new MathSet
