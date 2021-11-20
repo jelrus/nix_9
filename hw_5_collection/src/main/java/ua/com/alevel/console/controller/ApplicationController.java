@@ -495,8 +495,17 @@ public class ApplicationController {
         Menu.returnToSubMenu();
     }
 
-    public static void joinWithSingleMathSet() throws IOException, ParseException {
+    public static void transformToSet() throws IOException, ParseException {
         Menu.subMenusTasks.add(25);
+        int index = selectMathSet();
+        mathSets.get(index).transformToSet();
+        MenuMessages.mathSetUnlimitedSize(mathSets.get(index), mathSets);
+        MenuMessages.goBack();
+        Menu.returnToSubMenu();
+    }
+
+    public static void joinWithSingleMathSet() throws IOException, ParseException {
+        Menu.subMenusTasks.add(26);
         int indexFirst = selectMathSet();
         int indexSecond = selectMathSet();
         if ((mathSets.get(indexFirst).getCapacity() - mathSets.get(indexFirst).size()) >= mathSets.get(indexSecond).size()) {
@@ -512,7 +521,7 @@ public class ApplicationController {
     }
 
     public static void joinWithMultipleMathSets() throws IOException, ParseException {
-        Menu.subMenusTasks.add(26);
+        Menu.subMenusTasks.add(27);
         int indexFirst = selectMathSet();
         MenuMessages.numbersOfMathSetsJoin();
         String joinNumberInput = InputUtils.returnLine();
@@ -539,7 +548,7 @@ public class ApplicationController {
     }
 
     public static void intersectionWithSingleMathSet() throws IOException, ParseException {
-        Menu.subMenusTasks.add(27);
+        Menu.subMenusTasks.add(28);
         int indexFirst = selectMathSet();
         int indexSecond = selectMathSet();
         mathSets.get(indexFirst).intersection(mathSets.get(indexSecond));
@@ -549,7 +558,7 @@ public class ApplicationController {
     }
 
     public static void intersectionWithMultipleMathSets() throws IOException, ParseException {
-        Menu.subMenusTasks.add(28);
+        Menu.subMenusTasks.add(29);
         int indexFirst = selectMathSet();
         MenuMessages.numbersOfMathSetsIntersection();
         String interNumberInput = InputUtils.returnLine();
@@ -570,7 +579,7 @@ public class ApplicationController {
     }
 
     public static void cutElements() throws IOException, ParseException {
-        Menu.subMenusTasks.add(29);
+        Menu.subMenusTasks.add(30);
         int index = selectMathSet();
         MenuMessages.getFirstIndexCut();
         String indexFirstCutInput = InputUtils.returnLine();

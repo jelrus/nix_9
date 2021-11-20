@@ -115,11 +115,14 @@ public class MenuMessages {
                 --------------------- Set Operations Menu ---------------------
                 Choose option by entering following numbers:
                 -------------------------- Operations -------------------------
-                1 - Single join (join(MathSet mathSet)
-                2 - Multiple join (join(MathSet ... mathSet)
-                3 - Single intersection (intersection(MathSet mathSet)
-                4 - Multiple intersection (intersection(MathSet ... mathSet)
-                5 - Cut math set from math set (cut(int fIndex, int lIndex))
+                1 - Transform to set
+                2 - Single join (join(MathSet mathSet)
+                3 - Multiple join (join(MathSet ... mathSet)
+                4 - Single intersection (intersection(MathSet mathSet)
+                5 - Multiple intersection (intersection(MathSet ... mathSet)
+                6 - Cut math set from math set (cut(int fIndex, int lIndex))
+                --------------------------------------------------------------
+                All methods in this category transforms MathSet to set by default
                 ----------------------- Confirm action -----------------------
                 Choose option by entering number into command line
                 Return back to main menu enter 'e'.

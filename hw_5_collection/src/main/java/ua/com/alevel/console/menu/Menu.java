@@ -139,11 +139,12 @@ public class Menu {
         MenuMessages.setOperationsMenuMessage();
         String option = InputUtils.returnLine().toLowerCase(Locale.ROOT);
         switch (option) {
-            case "1" -> ApplicationController.joinWithSingleMathSet();
-            case "2" -> ApplicationController.joinWithMultipleMathSets();
-            case "3" -> ApplicationController.intersectionWithSingleMathSet();
-            case "4" -> ApplicationController.intersectionWithMultipleMathSets();
-            case "5" -> ApplicationController.cutElements();
+            case "1" -> ApplicationController.transformToSet();
+            case "2" -> ApplicationController.joinWithSingleMathSet();
+            case "3" -> ApplicationController.joinWithMultipleMathSets();
+            case "4" -> ApplicationController.intersectionWithSingleMathSet();
+            case "5" -> ApplicationController.intersectionWithMultipleMathSets();
+            case "6" -> ApplicationController.cutElements();
             case "e" -> run();
             default -> {
                 ErrorMessages.inputErrorMessage();
@@ -215,11 +216,12 @@ public class Menu {
             case 22 -> ApplicationController.sortDesc();
             case 23 -> ApplicationController.sortDescBetweenIndexes();
             case 24 -> ApplicationController.sortDescFromElement();
-            case 25 -> ApplicationController.joinWithSingleMathSet();
-            case 26 -> ApplicationController.joinWithMultipleMathSets();
-            case 27 -> ApplicationController.intersectionWithSingleMathSet();
-            case 28 -> ApplicationController.intersectionWithMultipleMathSets();
-            case 29 -> ApplicationController.cutElements();
+            case 25 -> ApplicationController.transformToSet();
+            case 26 -> ApplicationController.joinWithSingleMathSet();
+            case 27 -> ApplicationController.joinWithMultipleMathSets();
+            case 28 -> ApplicationController.intersectionWithSingleMathSet();
+            case 29 -> ApplicationController.intersectionWithMultipleMathSets();
+            case 30 -> ApplicationController.cutElements();
             default -> {
                 ErrorMessages.selectionErrorMessage();
                 run();
