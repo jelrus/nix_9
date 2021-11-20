@@ -16,6 +16,8 @@
         <module>hw_3_start_oop</module>
         <module>module_1</module>
         <module>hw_4_logs_and_test</module>
+        <module>mathset</module>
+        <module>hw_5_collection</module>
     </modules>
 
     <properties>
