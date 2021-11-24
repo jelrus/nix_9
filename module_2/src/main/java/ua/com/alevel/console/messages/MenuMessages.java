@@ -27,7 +27,7 @@ public class MenuMessages {
         System.out.print("""
                 -------------------- Success ----------------------
                 Dates has been successfully generated in directory!
-                Dir: src/main/resources/input_files/dates.txt
+                Dir: src/main/resources/text_files/input_files/dates.txt
                 ____________________________________________________
                 """
         );
@@ -37,7 +37,7 @@ public class MenuMessages {
         System.out.print("""
                 -------------------- Success ----------------------
                 Names has been successfully generated in directory!
-                Dir: src/main/resources/input_files/names.txt
+                Dir: src/main/resources/text_files/input_files/names.txt
                 ____________________________________________________
                 """
         );
@@ -47,7 +47,7 @@ public class MenuMessages {
         System.out.print("""
                 -------------------- Success ----------------------
                 Cities has been successfully generated in directory!
-                Dir: src/main/resources/input_files/cities.txt
+                Dir: src/main/resources/text_files/input_files/cities.txt
                 ____________________________________________________
                 """
         );
@@ -58,7 +58,7 @@ public class MenuMessages {
                 -------------------- Success ----------------------
                 Dates has been successfully resolved.
                 Check output directory!
-                Dir: src/main/resources/output_files/dates.txt
+                Dir: src/main/resources/text_files/output_files/dates.txt
                 ____________________________________________________
                 """
         );
@@ -69,7 +69,7 @@ public class MenuMessages {
                 -------------------- Success ----------------------
                 Names has been successfully resolved.
                 Check output directory!
-                Dir: src/main/resources/output_files/names.txt
+                Dir: src/main/resources/text_files/output_files/names.txt
                 ____________________________________________________
                 """
         );
@@ -80,7 +80,7 @@ public class MenuMessages {
                 -------------------- Success ----------------------
                 Cities has been successfully resolved.
                 Check output directory!
-                Dir: src/main/resources/output_files/cities.txt
+                Dir: src/main/resources/text_files/output_files/cities.txt
                 ____________________________________________________
                 """
         );
