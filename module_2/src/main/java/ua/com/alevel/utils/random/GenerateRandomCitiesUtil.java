@@ -54,12 +54,12 @@ public class GenerateRandomCitiesUtil {
             }
         }
         int counter = 0;
-        for (String s : split) {
-            if (s.matches("^[А-Яа-я]+")) {
-                correctedString.append(s).append("\n");
+        for (String strings : split) {
+            if (strings.matches("^[\\D]+") && !strings.equals("a")) {
+                correctedString.append(strings).append("\n");
                 correctedString.append(counters.get(counter++)).append("\n");
             } else {
-                correctedString.append(s).append("\n");
+                correctedString.append(strings).append("\n");
             }
         }
         return correctedString.toString();

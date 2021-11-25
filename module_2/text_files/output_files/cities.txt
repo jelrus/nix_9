@@ -1,0 +1,5 @@
+The shortest path Sevastopol from Simferopol - 4
+The shortest path Sevastopol from Nikolayev - 7
+The shortest path Nikolayev from Sevastopol - 7
+The shortest path Sevastopol from Sumy - 13
+The shortest path Brovary from Sevastopol - 12
