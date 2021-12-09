@@ -1,0 +1,40 @@
+package calendar.utils.converter.tables.dates;
+
+public enum MonthConversionTable {
+
+    MONTH_START(0L),
+    JANUARY_DAYS_PASSED(31L),
+    FEBRUARY_DAYS_PASSED(59L),
+    MARCH_DAYS_PASSED(90L),
+    APRIL_DAYS_PASSED(120L),
+    MAY_DAYS_PASSED(151L),
+    JUNE_DAYS_PASSED(181L),
+    JULY_DAYS_PASSED(212L),
+    AUGUST_DAYS_PASSED(243L),
+    SEPTEMBER_DAYS_PASSED(273L),
+    OCTOBER_DAYS_PASSED(304L),
+    NOVEMBER_DAYS_PASSED(334L),
+    DECEMBER_DAYS_PASSED(365L),
+
+    FEBRUARY_DAYS_PASSED_LEAP(60L),
+    MARCH_DAYS_PASSED_LEAP(91L),
+    APRIL_DAYS_PASSED_LEAP(121L),
+    MAY_DAYS_PASSED_LEAP(152L),
+    JUNE_DAYS_PASSED_LEAP(182L),
+    JULY_DAYS_PASSED_LEAP(213L),
+    AUGUST_DAYS_PASSED_LEAP(244L),
+    SEPTEMBER_DAYS_PASSED_LEAP(274L),
+    OCTOBER_DAYS_PASSED_LEAP(305L),
+    NOVEMBER_DAYS_PASSED_LEAP(335L),
+    DECEMBER_DAYS_PASSED_LEAP(366L);
+
+    private final long value;
+
+    MonthConversionTable(long value) {
+        this.value = value;
+    }
+
+    public long getValue() {
+        return value;
+    }
+}
