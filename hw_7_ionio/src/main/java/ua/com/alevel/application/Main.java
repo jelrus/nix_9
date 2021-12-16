@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         UnifiedController.wipePreviousRecords();
+        UnifiedController.createNewFiles();
         UnifiedController.run();
     }
 }

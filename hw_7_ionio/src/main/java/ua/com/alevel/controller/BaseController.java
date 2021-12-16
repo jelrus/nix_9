@@ -8,19 +8,19 @@ import java.lang.reflect.InvocationTargetException;
 public interface BaseController<E extends BaseEntity> {
 
     void run() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                      IllegalAccessException;
+            IllegalAccessException;
 
     void create() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                         IllegalAccessException;
+            IllegalAccessException;
 
     void update() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                         IllegalAccessException;
+            IllegalAccessException;
 
     void delete() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                         IllegalAccessException;
+            IllegalAccessException;
 
-    void findById() throws IOException;
+    void findById() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
 
     void findAll() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                          IllegalAccessException;
+            IllegalAccessException;
 }

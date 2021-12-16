@@ -25,7 +25,7 @@ public class DepartmentEmployeeControllerImpl implements DepartmentEmployeeContr
 
     @Override
     public void run() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                             IllegalAccessException {
+            IllegalAccessException {
         MenuMessages.departmentEmployeeMenuText();
         MenuMessages.optionInput();
         String option = InputUtils.INPUT_READER.readLine();
@@ -45,7 +45,7 @@ public class DepartmentEmployeeControllerImpl implements DepartmentEmployeeContr
     }
 
     public void returnOption() throws IOException, InvocationTargetException, NoSuchMethodException,
-                                      InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         MenuMessages.returnBackOption();
         String option = InputUtils.INPUT_READER.readLine().toUpperCase(Locale.ROOT);
         switch (option) {
@@ -60,7 +60,7 @@ public class DepartmentEmployeeControllerImpl implements DepartmentEmployeeContr
 
     @Override
     public void create() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                                IllegalAccessException {
+            IllegalAccessException {
         MenuMessages.printAllDepartments(departmentFacade);
         String depId = InputUtils.checkDepartmentId(InputUtils.INPUT_READER);
         MenuMessages.printAllEmployees(employeeFacade);
@@ -84,7 +84,7 @@ public class DepartmentEmployeeControllerImpl implements DepartmentEmployeeContr
 
     @Override
     public void delete() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                                IllegalAccessException {
+            IllegalAccessException {
         String relId = InputUtils.checkRelationId(InputUtils.INPUT_READER);
         departmentEmployeeFacade.delete(relId);
     }
@@ -99,7 +99,7 @@ public class DepartmentEmployeeControllerImpl implements DepartmentEmployeeContr
 
     @Override
     public void findAll() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                                 IllegalAccessException {
+            IllegalAccessException {
         if (!departmentEmployeeFacade.findAll().isEmpty()) {
             MenuMessages.printAllRelations(departmentEmployeeFacade);
         } else {

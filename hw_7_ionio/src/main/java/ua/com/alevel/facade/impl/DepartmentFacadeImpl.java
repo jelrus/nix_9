@@ -18,8 +18,8 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
 
     @Override
     public void create(DepartmentRequestDTO departmentRequestDTO)
-           throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                   IllegalAccessException {
+            throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
+            IllegalAccessException {
         Department department = new Department();
         department.setName(departmentRequestDTO.getName());
         departmentService.create(department);
@@ -27,8 +27,8 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
 
     @Override
     public void update(DepartmentRequestDTO departmentRequestDTO, String id)
-           throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                   IllegalAccessException {
+            throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
+            IllegalAccessException {
         Department department = new Department();
         department.setId(id);
         department.setName(departmentRequestDTO.getName());
@@ -37,7 +37,7 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                         InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         departmentService.delete(id);
     }
 
@@ -48,8 +48,8 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
 
     @Override
     public ArrayList<DepartmentResponseDTO> findAll()
-           throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                  IllegalAccessException {
+            throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
+            IllegalAccessException {
         return departmentService.findAll().stream()
                 .map(DepartmentResponseDTO::new)
                 .collect(Collectors.toCollection(ArrayList::new));

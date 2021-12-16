@@ -7,9 +7,10 @@ import ua.com.alevel.db.impl.DepartmentDBImpl;
 import ua.com.alevel.db.impl.DepartmentEmployeeDBImpl;
 import ua.com.alevel.db.impl.EmployeeDBImpl;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class UnifiedController {
 
@@ -18,7 +19,7 @@ public class UnifiedController {
     private static final DepartmentEmployeeControllerImpl DEPARTMENT_EMPLOYEE_CONTROLLER = new DepartmentEmployeeControllerImpl();
 
     public static void run() throws IOException, InvocationTargetException, NoSuchMethodException,
-                                    InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         MenuMessages.mainMenuText();
         String option = InputUtils.INPUT_READER.readLine();
         switch (option) {
@@ -47,5 +48,56 @@ public class UnifiedController {
         if (depEmpFile.exists()) {
             depEmpFile.delete();
         }
+    }
+
+    private static void createEmptyDepFile() throws IOException {
+        Path userPath = Paths.get(System.getProperty("user.dir"));
+        String uPath = userPath.toString();
+        if (uPath.contains("hw_7_ionio")) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(uPath + "\\" + DepartmentDBImpl.PATH_TO_DEP_CSV))) {
+                bw.write("");
+            }
+        } else {
+            uPath = uPath + "\\hw_7_ionio";
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(uPath + "\\" + DepartmentDBImpl.PATH_TO_DEP_CSV))) {
+                bw.write("");
+            }
+        }
+    }
+
+    private static void createEmptyEmpFile() throws IOException {
+        Path userPath = Paths.get(System.getProperty("user.dir"));
+        String uPath = userPath.toString();
+        if (uPath.contains("hw_7_ionio")) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(uPath + "\\" + EmployeeDBImpl.PATH_TO_EMP_CSV))) {
+                bw.write("");
+            }
+        } else {
+            uPath = uPath + "\\hw_7_ionio";
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(uPath + "\\" + EmployeeDBImpl.PATH_TO_EMP_CSV))) {
+                bw.write("");
+            }
+        }
+    }
+
+    private static void createEmptyDepEmpFile() throws IOException {
+        Path userPath = Paths.get(System.getProperty("user.dir"));
+        String uPath = userPath.toString();
+        if (uPath.contains("hw_7_ionio")) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(uPath + "\\" + DepartmentEmployeeDBImpl.PATH_TO_DEP_EMP_CSV))) {
+                bw.write("");
+            }
+        } else {
+            uPath = uPath + "\\hw_7_ionio";
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(uPath + "\\" + DepartmentEmployeeDBImpl.PATH_TO_DEP_EMP_CSV))) {
+                bw.write("");
+            }
+        }
+    }
+
+    public static void createNewFiles() throws IOException {
+        createEmptyDepFile();
+        createEmptyEmpFile();
+        createEmptyDepEmpFile();
     }
 }

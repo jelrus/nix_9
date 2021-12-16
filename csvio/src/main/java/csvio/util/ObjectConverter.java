@@ -26,7 +26,7 @@ public class ObjectConverter {
     }
 
     public static Object toObject(Class<?> cls, String[] input, String[] headers)
-           throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+            throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Object result = cls.getDeclaredConstructor().newInstance();
         Field[] fields = cls.getDeclaredFields();
         Field[] ancestorField = cls.getSuperclass().getDeclaredFields();

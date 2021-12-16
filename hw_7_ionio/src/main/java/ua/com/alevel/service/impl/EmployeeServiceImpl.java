@@ -18,19 +18,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void create(Employee employee) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                 InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         employeeDAO.create(employee);
     }
 
     @Override
     public void update(Employee employee) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                 InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         employeeDAO.update(employee);
     }
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                         InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         Employee employee = employeeDAO.findById(id);
         departmentEmployeeDAO.deleteEmployees(employee.getId());
         employeeDAO.delete(id);
@@ -43,7 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public ArrayList<Employee> findAll() throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         return employeeDAO.findAll();
     }
 }

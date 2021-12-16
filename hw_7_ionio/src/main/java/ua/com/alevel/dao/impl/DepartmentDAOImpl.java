@@ -14,19 +14,19 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public void create(Department department) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                     InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         departmentDB.create(department);
     }
 
     @Override
     public void update(Department department) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                     InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         departmentDB.update(department);
     }
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                         InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         departmentDB.delete(id);
     }
 
@@ -37,7 +37,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public ArrayList<Department> findAll() throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                  InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         return departmentDB.findAll();
     }
 }

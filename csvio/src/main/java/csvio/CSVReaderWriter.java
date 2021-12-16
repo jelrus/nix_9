@@ -4,27 +4,39 @@ import csvio.util.ObjectConverter;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class CSVReaderWriter {
 
     public static String[] getHeader(Object obj) throws InvocationTargetException, NoSuchMethodException,
-                                                        InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         return ObjectConverter.getObjectFields(obj.getClass());
     }
 
     public static void createRecord(String path, Object obj, ArrayList<?> objects)
             throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
             IllegalAccessException {
-        File file = new File(path);
-        file.createNewFile();
         ArrayList<String[]> arrayObjects = new ArrayList<>();
         arrayObjects.add(getHeader(obj));
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            for (Object object : objects) {
-                arrayObjects.add(object.toString().split(", "));
+        Path userPath = Paths.get(System.getProperty("user.dir"));
+        String uPath = userPath.toString();
+        if (uPath.contains("hw_7_ionio")) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(uPath + "\\" + path))) {
+                for (Object object : objects) {
+                    arrayObjects.add(object.toString().split(", "));
+                }
+                writeArrayObjectsToFile(bw, obj, arrayObjects);
             }
-            writeArrayObjectsToFile(bw, obj, arrayObjects);
+        } else {
+            uPath = uPath + "\\hw_7_ionio";
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(uPath + "\\" + path))) {
+                for (Object object : objects) {
+                    arrayObjects.add(object.toString().split(", "));
+                }
+                writeArrayObjectsToFile(bw, obj, arrayObjects);
+            }
         }
     }
 
@@ -48,20 +60,39 @@ public class CSVReaderWriter {
         }
     }
 
-    public static ArrayList<?> readAllObjects(String path, Class<?> cls) throws IOException, InvocationTargetException,
-                                                                                NoSuchMethodException, InstantiationException,
-                                                                                IllegalAccessException {
+    public static ArrayList<?> readAllObjects(String path, Class<?> cls)
+           throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
+                  IllegalAccessException {
         ArrayList<Object> objects = new ArrayList<>();
         ArrayList<String[]> arrayObjects = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            while (br.ready()) {
-                arrayObjects.add(br.readLine().split(","));
+        Path userPath = Paths.get(System.getProperty("user.dir"));
+        String uPath = userPath.toString();
+        if (uPath.contains("hw_7_ionio")) {
+            try (BufferedReader br = new BufferedReader(new FileReader(uPath + "\\" + path))) {
+                while (br.ready()) {
+                    arrayObjects.add(br.readLine().split(","));
+                }
             }
-        }
-        for (String[] lines : arrayObjects) {
-            if (arrayObjects.indexOf(lines) != 0) {
-                Object result = ObjectConverter.toObject(cls, arrayObjects.get(arrayObjects.indexOf(lines)), arrayObjects.get(0));
-                objects.add(result);
+            for (String[] lines : arrayObjects) {
+                if (arrayObjects.indexOf(lines) != 0) {
+                    Object result = ObjectConverter.toObject(cls, arrayObjects.get(arrayObjects.indexOf(lines)),
+                                                                                   arrayObjects.get(0));
+                    objects.add(result);
+                }
+            }
+        } else {
+            uPath = uPath + "\\hw_7_ionio";
+            try (BufferedReader br = new BufferedReader(new FileReader(uPath + "\\" + path))) {
+                while (br.ready()) {
+                    arrayObjects.add(br.readLine().split(","));
+                }
+            }
+            for (String[] lines : arrayObjects) {
+                if (arrayObjects.indexOf(lines) != 0) {
+                    Object result = ObjectConverter.toObject(cls, arrayObjects.get(arrayObjects.indexOf(lines)),
+                                                                                   arrayObjects.get(0));
+                    objects.add(result);
+                }
             }
         }
         return objects;

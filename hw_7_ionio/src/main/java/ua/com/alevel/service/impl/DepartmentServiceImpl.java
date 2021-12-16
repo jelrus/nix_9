@@ -18,19 +18,19 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void create(Department department) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                     InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         departmentDAO.create(department);
     }
 
     @Override
     public void update(Department department) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                     InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         departmentDAO.update(department);
     }
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                         InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         Department department = departmentDAO.findById(id);
         departmentEmployeeDAO.deleteDepartments(department.getId());
         departmentDAO.delete(id);
@@ -43,7 +43,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public ArrayList<Department> findAll() throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                  InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         return departmentDAO.findAll();
     }
 }

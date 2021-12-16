@@ -6,12 +6,13 @@ import ua.com.alevel.entity.impl.Department;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class DepartmentDBImpl implements DepartmentDB {
 
-    public static final String PATH_TO_DEP_CSV = "hw_7_ionio/departments.csv";
+    public static final String PATH_TO_DEP_CSV = "departments.csv";
     private static DepartmentDBImpl instance;
     private final ArrayList<Department> departments;
 
@@ -28,7 +29,7 @@ public class DepartmentDBImpl implements DepartmentDB {
 
     @Override
     public void create(Department department) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                     InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         department.setId(generateId());
         department.setName(department.getName());
         departments.add(department);
@@ -37,7 +38,7 @@ public class DepartmentDBImpl implements DepartmentDB {
 
     @Override
     public void update(Department department) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                     InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         Department current = findById(department.getId());
         current.setName(department.getName());
         CSVReaderWriter.createRecord(PATH_TO_DEP_CSV, department, departments);
@@ -45,7 +46,7 @@ public class DepartmentDBImpl implements DepartmentDB {
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-                                         InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         Department department = findById(id);
         departments.remove(department);
         CSVReaderWriter.createRecord(PATH_TO_DEP_CSV, department, departments);
@@ -58,8 +59,8 @@ public class DepartmentDBImpl implements DepartmentDB {
 
     @Override
     public ArrayList<Department> findAll() throws IOException, InvocationTargetException, NoSuchMethodException,
-                                                  InstantiationException, IllegalAccessException {
-        return (ArrayList<Department>) CSVReaderWriter.readAllObjects(PATH_TO_DEP_CSV, Department.class);
+            InstantiationException, IllegalAccessException {
+        return departments;
     }
 
     public String generateId() {

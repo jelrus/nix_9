@@ -20,7 +20,7 @@ public class EmployeeControllerImpl implements EmployeeController {
 
     @Override
     public void run() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                             IllegalAccessException {
+            IllegalAccessException {
         MenuMessages.employeeMenuText();
         String option = InputUtils.INPUT_READER.readLine();
         switch (option) {
@@ -39,7 +39,7 @@ public class EmployeeControllerImpl implements EmployeeController {
     }
 
     public void returnOption() throws IOException, InvocationTargetException, NoSuchMethodException,
-                                      InstantiationException, IllegalAccessException {
+            InstantiationException, IllegalAccessException {
         MenuMessages.returnBackOption();
         String option = InputUtils.INPUT_READER.readLine().toUpperCase(Locale.ROOT);
         switch (option) {
@@ -54,7 +54,7 @@ public class EmployeeControllerImpl implements EmployeeController {
 
     @Override
     public void create() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                                IllegalAccessException {
+            IllegalAccessException {
         String firstName = InputUtils.checkEmployeeFirstName(InputUtils.INPUT_READER);
         String lastName = InputUtils.checkEmployeeLastName(InputUtils.INPUT_READER);
         int age = InputUtils.checkEmployeeAge(InputUtils.INPUT_READER);
@@ -66,7 +66,8 @@ public class EmployeeControllerImpl implements EmployeeController {
 
     @Override
     public void update() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                                IllegalAccessException {
+            IllegalAccessException {
+        MenuMessages.printAllEmployees(employeeFacade);
         String id = InputUtils.checkEmployeeId(InputUtils.INPUT_READER);
         EmployeeResponseDTO employeeResponseDTO = employeeFacade.findById(id);
         String newFirstName = InputUtils.checkEmployeeNewFirstName(InputUtils.INPUT_READER, employeeResponseDTO.getFirstName());
@@ -80,13 +81,15 @@ public class EmployeeControllerImpl implements EmployeeController {
 
     @Override
     public void delete() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                                IllegalAccessException {
+            IllegalAccessException {
+        MenuMessages.printAllEmployees(employeeFacade);
         String id = InputUtils.checkEmployeeId(InputUtils.INPUT_READER);
         employeeFacade.delete(id);
     }
 
     @Override
-    public void findById() throws IOException {
+    public void findById() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        MenuMessages.printAllEmployees(employeeFacade);
         String id = InputUtils.checkEmployeeId(InputUtils.INPUT_READER);
         EmployeeResponseDTO employeeResponseDTO = employeeFacade.findById(id);
         MenuMessages.printEmployee(employeeResponseDTO);
@@ -94,7 +97,7 @@ public class EmployeeControllerImpl implements EmployeeController {
 
     @Override
     public void findAll() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-                                 IllegalAccessException {
+            IllegalAccessException {
         if (!employeeFacade.findAll().isEmpty()) {
             MenuMessages.printAllEmployees(employeeFacade);
         } else {
