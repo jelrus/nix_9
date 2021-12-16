@@ -19,7 +19,7 @@ public class UnifiedController {
     private static final DepartmentEmployeeControllerImpl DEPARTMENT_EMPLOYEE_CONTROLLER = new DepartmentEmployeeControllerImpl();
 
     public static void run() throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                    InstantiationException, IllegalAccessException {
         MenuMessages.mainMenuText();
         String option = InputUtils.INPUT_READER.readLine();
         switch (option) {

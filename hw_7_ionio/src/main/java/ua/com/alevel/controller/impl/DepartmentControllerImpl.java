@@ -19,7 +19,7 @@ public class DepartmentControllerImpl implements DepartmentController {
 
     @Override
     public void run() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                             IllegalAccessException {
         MenuMessages.departmentMenuText();
         MenuMessages.optionInput();
         String option = InputUtils.INPUT_READER.readLine();
@@ -39,7 +39,7 @@ public class DepartmentControllerImpl implements DepartmentController {
     }
 
     public void returnOption() throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                      InstantiationException, IllegalAccessException {
         MenuMessages.returnBackOption();
         String option = InputUtils.INPUT_READER.readLine().toUpperCase(Locale.ROOT);
         switch (option) {
@@ -54,7 +54,7 @@ public class DepartmentControllerImpl implements DepartmentController {
 
     @Override
     public void create() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                                IllegalAccessException {
         String name = InputUtils.checkDepartmentName(InputUtils.INPUT_READER);
         DepartmentRequestDTO departmentRequestDTO = new DepartmentRequestDTO(name);
         departmentFacade.create(departmentRequestDTO);
@@ -63,7 +63,7 @@ public class DepartmentControllerImpl implements DepartmentController {
 
     @Override
     public void update() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                                IllegalAccessException {
         MenuMessages.printAllDepartments(departmentFacade);
         String id = InputUtils.checkDepartmentId(InputUtils.INPUT_READER);
         DepartmentResponseDTO departmentResponseDTO = departmentFacade.findById(id);
@@ -74,14 +74,15 @@ public class DepartmentControllerImpl implements DepartmentController {
 
     @Override
     public void delete() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                                IllegalAccessException {
         MenuMessages.printAllDepartments(departmentFacade);
         String id = InputUtils.checkDepartmentId(InputUtils.INPUT_READER);
         departmentFacade.delete(id);
     }
 
     @Override
-    public void findById() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public void findById() throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
+                                  IllegalAccessException {
         MenuMessages.printAllDepartments(departmentFacade);
         String id = InputUtils.checkDepartmentId(InputUtils.INPUT_READER);
         DepartmentResponseDTO departmentResponseDTO = departmentFacade.findById(id);

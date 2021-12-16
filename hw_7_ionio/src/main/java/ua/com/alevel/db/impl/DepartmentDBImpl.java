@@ -29,7 +29,7 @@ public class DepartmentDBImpl implements DepartmentDB {
 
     @Override
     public void create(Department department) throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                                     InstantiationException, IllegalAccessException {
         department.setId(generateId());
         department.setName(department.getName());
         departments.add(department);
@@ -38,7 +38,7 @@ public class DepartmentDBImpl implements DepartmentDB {
 
     @Override
     public void update(Department department) throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                                     InstantiationException, IllegalAccessException {
         Department current = findById(department.getId());
         current.setName(department.getName());
         CSVReaderWriter.createRecord(PATH_TO_DEP_CSV, department, departments);
@@ -46,7 +46,7 @@ public class DepartmentDBImpl implements DepartmentDB {
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                         InstantiationException, IllegalAccessException {
         Department department = findById(id);
         departments.remove(department);
         CSVReaderWriter.createRecord(PATH_TO_DEP_CSV, department, departments);
@@ -59,7 +59,7 @@ public class DepartmentDBImpl implements DepartmentDB {
 
     @Override
     public ArrayList<Department> findAll() throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                                  InstantiationException, IllegalAccessException {
         return departments;
     }
 

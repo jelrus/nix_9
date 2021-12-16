@@ -30,8 +30,8 @@ public class DepartmentEmployeeDBImpl implements DepartmentEmployeeDB {
 
     @Override
     public void create(DepartmentEmployee departmentEmployee) throws IOException, InvocationTargetException,
-            NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                                                                     NoSuchMethodException, InstantiationException,
+                                                                     IllegalAccessException {
         departmentEmployee.setId(generateId());
         departmentsEmployees.add(departmentEmployee);
         CSVReaderWriter.createRecord(PATH_TO_DEP_EMP_CSV, departmentEmployee, departmentsEmployees);
@@ -39,8 +39,8 @@ public class DepartmentEmployeeDBImpl implements DepartmentEmployeeDB {
 
     @Override
     public void update(DepartmentEmployee departmentEmployee) throws IOException, InvocationTargetException,
-            NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                                                                     NoSuchMethodException, InstantiationException,
+                                                                     IllegalAccessException {
         DepartmentEmployee current = findById(departmentEmployee.getId());
         current.setDepartmentId(departmentEmployee.getDepartmentId());
         current.setEmployeeId(departmentEmployee.getEmployeeId());
@@ -49,7 +49,7 @@ public class DepartmentEmployeeDBImpl implements DepartmentEmployeeDB {
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                         InstantiationException, IllegalAccessException {
         DepartmentEmployee departmentEmployee = findById(id);
         departmentsEmployees.remove(departmentEmployee);
         CSVReaderWriter.createRecord(PATH_TO_DEP_EMP_CSV, departmentEmployee, departmentsEmployees);
@@ -62,7 +62,7 @@ public class DepartmentEmployeeDBImpl implements DepartmentEmployeeDB {
 
     @Override
     public ArrayList<DepartmentEmployee> findAll() throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                                          InstantiationException, IllegalAccessException {
         return departmentsEmployees;
     }
 

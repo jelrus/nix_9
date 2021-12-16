@@ -26,7 +26,7 @@ public class DepartmentEmployeeFacadeImpl implements DepartmentEmployeeFacade {
     @Override
     public void create(DepartmentEmployeeRequestDTO departmentEmployeeRequestDTO)
             throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                   IllegalAccessException {
         DepartmentEmployee departmentEmployee = new DepartmentEmployee();
         departmentEmployee.setDepartmentId(departmentEmployeeRequestDTO.getDepartmentId());
         departmentEmployee.setEmployeeId(departmentEmployeeRequestDTO.getEmployeeId());
@@ -36,7 +36,7 @@ public class DepartmentEmployeeFacadeImpl implements DepartmentEmployeeFacade {
     @Override
     public void update(DepartmentEmployeeRequestDTO departmentEmployeeRequestDTO, String id)
             throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                   IllegalAccessException {
         DepartmentEmployee departmentEmployee = new DepartmentEmployee();
         departmentEmployee.setId(id);
         departmentEmployee.setDepartmentId(departmentEmployeeRequestDTO.getDepartmentId());
@@ -46,7 +46,7 @@ public class DepartmentEmployeeFacadeImpl implements DepartmentEmployeeFacade {
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                         InstantiationException, IllegalAccessException {
         departmentEmployeeService.delete(id);
     }
 
@@ -61,7 +61,7 @@ public class DepartmentEmployeeFacadeImpl implements DepartmentEmployeeFacade {
     @Override
     public ArrayList<DepartmentEmployeeResponseDTO> findAll()
             throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                   IllegalAccessException {
         ArrayList<DepartmentEmployeeResponseDTO> arrayList = new ArrayList<>();
         for (DepartmentEmployee departmentEmployee : departmentEmployeeService.findAll()) {
             DepartmentEmployeeResponseDTO byId = findById(departmentEmployee.getId());

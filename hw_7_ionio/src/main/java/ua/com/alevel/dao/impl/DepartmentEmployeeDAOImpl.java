@@ -16,21 +16,21 @@ public class DepartmentEmployeeDAOImpl implements DepartmentEmployeeDAO {
 
     @Override
     public void create(DepartmentEmployee departmentEmployee) throws IOException, InvocationTargetException,
-            NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                                                                     NoSuchMethodException, InstantiationException,
+                                                                     IllegalAccessException {
         departmentEmployeeDB.create(departmentEmployee);
     }
 
     @Override
     public void update(DepartmentEmployee departmentEmployee) throws IOException, InvocationTargetException,
-            NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                                                                     NoSuchMethodException, InstantiationException,
+                                                                     IllegalAccessException {
         departmentEmployeeDB.update(departmentEmployee);
     }
 
     @Override
     public void delete(String id) throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                         InstantiationException, IllegalAccessException {
         departmentEmployeeDB.delete(id);
     }
 
@@ -41,15 +41,15 @@ public class DepartmentEmployeeDAOImpl implements DepartmentEmployeeDAO {
 
     @Override
     public ArrayList<DepartmentEmployee> findAll() throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                                          InstantiationException, IllegalAccessException {
         return departmentEmployeeDB.findAll();
     }
 
 
     @Override
     public void deleteDepartments(String departmentId) throws IOException, InvocationTargetException,
-            NoSuchMethodException, InstantiationException,
-            IllegalAccessException {
+                                                              NoSuchMethodException, InstantiationException,
+                                                              IllegalAccessException {
         List<DepartmentEmployee> depEmpRemoveList = new ArrayList<>();
         departmentEmployeeDB.findAll().stream().filter(x -> x.getDepartmentId().equals(departmentId))
                 .forEach(depEmpRemoveList::add);
@@ -63,7 +63,7 @@ public class DepartmentEmployeeDAOImpl implements DepartmentEmployeeDAO {
 
     @Override
     public void deleteEmployees(String employeeId) throws IOException, InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException {
+                                                          InstantiationException, IllegalAccessException {
         List<DepartmentEmployee> depEmpRemoveList = new ArrayList<>();
         departmentEmployeeDB.findAll().stream().filter(x -> x.getEmployeeId().equals(employeeId))
                 .forEach(depEmpRemoveList::add);
