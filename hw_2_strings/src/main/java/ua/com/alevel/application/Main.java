@@ -3,7 +3,7 @@ package ua.com.alevel.application;
 import java.io.IOException;
 import java.text.ParseException;
 
-import ua.com.alevel.menu.Menu;
+import ua.com.alevel.controller.menu.Menu;
 
 class Main {
 

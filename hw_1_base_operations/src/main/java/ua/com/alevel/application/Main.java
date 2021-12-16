@@ -1,6 +1,6 @@
 package ua.com.alevel.application;
 
-import ua.com.alevel.menu.Menu;
+import ua.com.alevel.controller.menu.Menu;
 
 import java.io.IOException;
 import java.text.ParseException;

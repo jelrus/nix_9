@@ -1,4 +1,4 @@
-package ua.com.alevel.menu;
+package ua.com.alevel.controller.menu;
 
 import ua.com.alevel.log.ErrorLog;
 import ua.com.alevel.log.Log;
@@ -19,12 +19,23 @@ public class Menu {
         String menuOption = InputUtils.returnLine().toLowerCase(Locale.ROOT);
 
         switch (menuOption) {
-            case "1" -> Tasks.sumOfDigitsInLine();
-            case "2" -> Tasks.filterAndCountChars();
-            case "3" -> Tasks.endLesson();
+            case "1"  -> Tasks.reverseFullString();
+            case "2"  -> Tasks.reverseSequenceWithFirstCharacter();
+            case "3"  -> Tasks.reverseSequenceAfterFirstCharacter();
+            case "4" -> Tasks.reverseStringFromIndex();
+            case "5"  -> Tasks.reverseStringByIndexes();
+            case "6" -> Tasks.reverseCharSequence();
+
+            case "7"  -> Tasks.reverseSubstring();
+            case "8"  -> Tasks.reverseSequencesWithCharacter();
+            case "9"  -> Tasks.reverseSequencesAfterCharacter();
+            case "10"  -> Tasks.reverseSubstringsFromIndex();
+            case "11"  -> Tasks.reverseSubstringsByIndexes();
+
             case "l" -> Log.showLog();
             case "er" -> ErrorLog.showErrorLog();
             case "ul" -> UnifiedLog.showUnifiedLog();
+            case "h" -> { MenuMessages.returnHelpText(); runLogsSubMenu();}
             case "e" -> System.exit(0);
             default -> {
                 ErrorMessages.getInputErrorMessage();
@@ -37,13 +48,25 @@ public class Menu {
     public static void runMenuShortened() throws IOException, ParseException {
         String menuOption = InputUtils.returnLine().toLowerCase(Locale.ROOT);
         switch (menuOption) {
-            case "1" -> Tasks.sumOfDigitsInLine();
-            case "2" -> Tasks.filterAndCountChars();
-            case "3" -> Tasks.endLesson();
+            case "1"  -> Tasks.reverseFullString();
+            case "2"  -> Tasks.reverseSequenceWithFirstCharacter();
+            case "3"  -> Tasks.reverseSequenceAfterFirstCharacter();
+            case "4" -> Tasks.reverseStringFromIndex();
+            case "5"  -> Tasks.reverseStringByIndexes();
+            case "6" -> Tasks.reverseCharSequence();
+
+            case "7"  -> Tasks.reverseSubstring();
+            case "8"  -> Tasks.reverseSequencesWithCharacter();
+            case "9"  -> Tasks.reverseSequencesAfterCharacter();
+            case "10"  -> Tasks.reverseSubstringsFromIndex();
+            case "11"  -> Tasks.reverseSubstringsByIndexes();
+
             case "l" -> Log.showLog();
             case "er" -> ErrorLog.showErrorLog();
             case "ul" -> UnifiedLog.showUnifiedLog();
+            case "h" -> { MenuMessages.returnHelpText(); runLogsSubMenu();}
             case "e" -> System.exit(0);
+
             default -> {
                 ErrorMessages.getInputErrorMessage();
                 ErrorLog.errorLog.add(new Entry("Menu", menuOption, "Input Error"));
@@ -84,9 +107,18 @@ public class Menu {
     public static void definePreviousTask() throws IOException, ParseException {
         Integer prevTaskOption = Tasks.stackOfTasks.getLast();
         switch (prevTaskOption) {
-            case 1 -> Tasks.sumOfDigitsInLine();
-            case 2 -> Tasks.filterAndCountChars();
-            case 3 -> Tasks.endLesson();
+            case 1  -> Tasks.reverseFullString();
+            case 2  -> Tasks.reverseSequenceWithFirstCharacter();
+            case 3  -> Tasks.reverseSequenceAfterFirstCharacter();
+            case 4 -> Tasks.reverseStringFromIndex();
+            case 5  -> Tasks.reverseStringByIndexes();
+            case 6 -> Tasks.reverseCharSequence();
+
+            case 7  -> Tasks.reverseSubstring();
+            case 8  -> Tasks.reverseSequencesWithCharacter();
+            case 9  -> Tasks.reverseSequencesAfterCharacter();
+            case 10  -> Tasks.reverseSubstringsFromIndex();
+            case 11  -> Tasks.reverseSubstringsByIndexes();
             default -> {
                 ErrorMessages.getSelectionErrorMessage();
                 ErrorLog.errorLog.add(new Entry("Prev Task",

@@ -13,14 +13,16 @@
         <module>custom_collections</module>
         <module>mathset</module>
         <module>calendar</module>
+        <module>csvio</module>
         <module>hw_1_base_operations</module>
         <module>hw_2_strings</module>
         <module>hw_3_start_oop</module>
         <module>module_1</module>
         <module>hw_4_logs_and_test</module>
         <module>hw_5_collection</module>
-        <module>module_2</module>
         <module>hw_6_exception</module>
+        <module>hw_7_ionio</module>
+        <module>module_2</module>
     </modules>
 
     <properties>

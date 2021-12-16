@@ -3,7 +3,7 @@ package ua.com.alevel.tasks;
 import ua.com.alevel.log.ErrorLog;
 import ua.com.alevel.log.Log;
 import ua.com.alevel.log.entries.Entry;
-import ua.com.alevel.menu.Menu;
+import ua.com.alevel.controller.menu.Menu;
 import ua.com.alevel.messages.ErrorMessages;
 import ua.com.alevel.messages.MenuMessages;
 import ua.com.alevel.utilities.InputUtils;
