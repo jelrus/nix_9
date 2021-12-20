@@ -15,3 +15,6 @@ module_1 = 9
 hw_5 = 9
 
 module_2 = 9
+
+hw_6 = 9
+hw_7 = 9
