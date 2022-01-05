@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Details Group</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header">
+                    Details Group
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>id</th>
+                            <td th:text="${house.getId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>image</th>
+                            <td th:text="${house.getImage()}"></td>
+                        </tr>
+                        <tr>
+                            <th>country</th>
+                            <td th:text="${house.getCountry()}"></td>
+                        </tr>
+                        <tr>
+                            <th>city</th>
+                            <td th:text="${house.getCity()}"></td>
+                        </tr>
+                        <tr>
+                            <th>street</th>
+                            <td th:text="${house.getStreet()}"></td>
+                        </tr>
+                        <tr>
+                            <th>building number</th>
+                            <td th:text="${house.getBuildingNumber()}"></td>
+                        </tr>
+                        <tr>
+                            <th>status</th>
+                            <td th:text="${house.getStatus()}"></td>
+                        </tr>
+                        <tr>
+                            <th>cost</th>
+                            <td th:text="${house.getCost()}"></td>
+                        </tr>
+                        <tr>
+                            <th>created</th>
+                            <td th:text="${#calendars.format(house.getCreated(),'dd MMMM yyyy')}"></td>
+                        </tr>
+                        <tr>
+                            <th>updated</th>
+                            <td th:text="${#calendars.format(house.getUpdated(),'dd MMMM yyyy')}"></td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <div>
+                        <a th:href="@{'/houses/update/' + ${house.getId()}}" type="button" class="btn btn-primary">Update
+                            House</a>
+                    </div>
+                    <hr>
+                    <div>
+                        <a th:href="@{'/owners/all/house/' + ${house.getId()}}" type="button" class="btn btn-primary">Show
+                            all owners</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

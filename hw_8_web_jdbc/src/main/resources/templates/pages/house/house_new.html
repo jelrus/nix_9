@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>New House</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New House</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/houses/create}" th:object="${house}" method="post"
+                          class="needs-validation">
+                        <div class="form-group">
+                            <label for="image">House Image</label>
+                            <input type="text" class="form-control" id="image" aria-describedby="image"
+                                   placeholder="Enter house image" th:field="*{image} ">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" id="country" aria-describedby="country"
+                                   placeholder="Enter country" th:field="*{country}">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">City</label>
+                            <input type="text" class="form-control" id="city" aria-describedby="city"
+                                   placeholder="Enter city" th:field="*{city}">
+                        </div>
+                        <div class="form-group">
+                            <label for="street">Street</label>
+                            <input type="text" class="form-control" id="street" aria-describedby="street"
+                                   placeholder="Enter street" th:field="*{street}">
+                        </div>
+                        <div class="form-group">
+                            <label for="buildingNumber">Building Number</label>
+                            <input type="text" class="form-control" id="buildingNumber" aria-describedby="buildingNumber"
+                                   placeholder="Enter building number" th:field="*{buildingNumber}">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Select status</label>
+                            <select class="form-control" id="status" th:field="*{status}">
+                                <option th:each="status : ${status}"
+                                        th:value="${status}"
+                                        th:text="${status}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cost">Cost</label>
+                            <input type="text" class="form-control" id="cost" aria-describedby="cost"
+                                   placeholder="Enter cost" th:field="*{cost}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

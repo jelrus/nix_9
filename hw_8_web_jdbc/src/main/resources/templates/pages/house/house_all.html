@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table}">
+<head>
+    <meta charset="utf-8">
+    <title>All Houses</title>
+</head>
+<body>
+
+<div layout:fragment="data_table_content">
+    <tr th:each="house,iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${house.getImage()}"></td>
+        <td th:text="${house.getCountry()}"></td>
+        <td th:text="${house.getCity()}"></td>
+        <td th:text="${house.getStreet}"></td>
+        <td th:text="${house.getBuildingNumber()}"></td>
+        <td th:text="${house.getStatus()}"></td>
+        <td th:text="${house.getCost()}"></td>
+        <td>
+            <a th:href="@{'/houses/details/' + ${house.getId()}}" type="button"
+               class="btn btn-primary">details</a>
+        </td>
+        <td>
+            <a th:href="@{'/houses/delete/' + ${house.getId()}}" type="button" class="btn btn-danger">delete</a>
+        </td>
+    </tr>
+</div>
+
+</body>
+</html>

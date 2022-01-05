@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+html,body {
+    background: url('https://guardian.ng/wp-content/uploads/2021/09/housing.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    font-family: 'Rubik', sans-serif;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+a#add_new.btn.btn-primary{
+    background-color: rgba(231, 182, 92, 0.89);
+    border-color: rgba(225, 159, 41, 0.89);
+    color: #030303;
+    width: 100px;
+    position: relative;
+    top: 25%;
+}
+
+button#dropdownMenuLink.btn.btn-primary.dropdown-toggle{
+background-color: rgba(231, 182, 92, 0.89);
+border-color: rgba(225, 159, 41, 0.89);
+color: #030303;
+}
+
+button.btn.btn-primary{
+background-color: rgba(231, 182, 92, 0.89);
+border-color: rgba(225, 159, 41, 0.89);
+color: #030303;
+}
+
+a.button.btn.btn-primary{
+background-color: rgba(231, 182, 92, 0.89);
+border-color: rgba(225, 159, 41, 0.89);
+color: #030303;
+}
+
+a.btn.btn-primary{
+background-color: rgba(231, 182, 92, 0.89);
+border-color: rgba(225, 159, 41, 0.89);
+color: #030303;
+}
+
+a.btn.page-link{
+background-color: rgb(255, 253, 253);
+border-color: rgba(255, 255, 255, 0.89);
+}
+
+a.btn.btn-danger{
+background-color: rgba(255, 89, 0, 0.89);
+border-color: rgba(201, 65, 7, 0.95);
+color: #030303;
+}
+
+i.fa{
+color: rgba(231, 182, 92, 0.89);
+}
+
+.table-sm td, .table-sm th {
+padding: 0.3rem;
+vertical-align: middle;
+}
+
+.table td, .table th {
+padding: 0.75rem;
+vertical-align: middle;
+border-top: 1px solid #dee2e6;
+}
+
+ul.pagination.align-middle{
+background-color: rgba(231, 182, 92, 0.89);
+}
+
+.navbar-custom {
+background-color: rgba(231, 182, 92, 0.89);
+}
+
+a.nav-item.nav-link {
+color: #030303;
+}
+
+.sort {
+cursor: pointer;
+margin-right: 2em;
+}

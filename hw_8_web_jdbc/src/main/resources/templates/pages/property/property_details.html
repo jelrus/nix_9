@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Property Details</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header">
+                    Property Details
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>property id</th>
+                            <td th:text="${property.getId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>created</th>
+                            <td th:text="${#calendars.format(property.getCreated(),'dd MMMM yyyy')}"></td>
+                        </tr>
+                        <tr>
+                            <th>updated</th>
+                            <td th:text="${#calendars.format(property.getUpdated(),'dd MMMM yyyy')}"></td>
+                        </tr>
+                        <tr>
+                            <th>House Details</th>
+                            <td>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>image</th>
+                                        <td th:text="${property.getHouse().getImage()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>country</th>
+                                        <td th:text="${property.getHouse().getCountry()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>city</th>
+                                        <td th:text="${property.getHouse().getCity()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>street</th>
+                                        <td th:text="${property.getHouse().getStreet()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>building number</th>
+                                        <td th:text="${property.getHouse().getBuildingNumber()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>status</th>
+                                        <td th:text="${property.getHouse().getStatus().name()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>status</th>
+                                        <td th:text="${property.getHouse().getCost()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>created</th>
+                                        <td th:text="${#calendars.format(property.getHouse().getCreated(),'dd MMMM yyyy')}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>updated</th>
+                                        <td th:text="${#calendars.format(property.getHouse().getUpdated(),'dd MMMM yyyy')}"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Owner Details</th>
+                            <td>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>firstname</th>
+                                        <td th:text="${property.getOwner().getFirstName()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>teacher</th>
+                                        <td th:text="${property.getOwner().getLastName()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>email</th>
+                                        <td th:text="${property.getOwner().getEmail()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>phone</th>
+                                        <td th:text="${property.getOwner().getPhone()}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>created</th>
+                                        <td th:text="${#calendars.format(property.getOwner().getCreated(),'dd MMMM yyyy')}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>updated</th>
+                                        <td th:text="${#calendars.format(property.getOwner().getUpdated(),'dd MMMM yyyy')}"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <div>
+                        <a th:href="@{'/properties/update/' + ${property.getId()}}" type="button" class="btn btn-primary">
+                            Update Property</a>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
