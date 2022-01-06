@@ -35,7 +35,7 @@ public class HouseController extends AbstractController {
                 new HeaderName("Street", "street", "street"),
                 new HeaderName("Building number", "buildingNumber", "building_number"),
                 new HeaderName("Status", "status", "status"),
-                new HeaderName("Cost", "cost", "cost"),
+                new HeaderName("Cost, $", "cost", "cost"),
                 new HeaderName("Details", null, null),
                 new HeaderName("Delete", null, null)
         };

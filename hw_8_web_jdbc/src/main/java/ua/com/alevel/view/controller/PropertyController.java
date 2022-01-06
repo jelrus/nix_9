@@ -36,7 +36,7 @@ public class PropertyController extends AbstractController {
                 new HeaderName("#", null, null),
                 new HeaderName("Image", "image", "image"),
                 new HeaderName("Status", "status", "status"),
-                new HeaderName("Cost", "cost","cost"),
+                new HeaderName("Cost, $", "cost","cost"),
                 new HeaderName("First name", "firstName", "first_name"),
                 new HeaderName("Last name", "lastName", "last_name"),
                 new HeaderName("Email", "email", "email"),
