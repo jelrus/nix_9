@@ -12,7 +12,9 @@
 <div layout:fragment="data_table_content">
     <tr th:each="property,iter : ${pageData.getItems()}">
         <td th:text="${iter.count}"></td>
-        <td th:text="${property.getHouse().getImage()}"></td>
+        <td>
+            <img th:src="@{${property.getHouse().getImage()}}" width="60" height="40"/>
+        </td>
         <td th:text="${property.getHouse().getStatus()}"></td>
         <td th:text="${property.getHouse().getCost()}"></td>
         <td th:text="${property.getOwner().getFirstName()}"></td>

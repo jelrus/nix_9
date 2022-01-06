@@ -20,31 +20,31 @@
                 <div class="card-body">
                     <table class="table table-hover">
                         <tr>
-                            <th>id</th>
+                            <th>ID</th>
                             <td th:text="${owner.getId()}"></td>
                         </tr>
                         <tr>
-                            <th>firstname</th>
+                            <th>First name</th>
                             <td th:text="${owner.getFirstName()}"></td>
                         </tr>
                         <tr>
-                            <th>lastname</th>
+                            <th>Last name</th>
                             <td th:text="${owner.getLastName()}"></td>
                         </tr>
                         <tr>
-                            <th>email</th>
+                            <th>Email</th>
                             <td th:text="${owner.getEmail()}"></td>
                         </tr>
                         <tr>
-                            <th>phone</th>
+                            <th>Phone</th>
                             <td th:text="${owner.getPhone()}"></td>
                         </tr>
                         <tr>
-                            <th>created</th>
+                            <th>Created</th>
                             <td th:text="${#calendars.format(owner.getCreated(),'dd MMMM yyyy')}"></td>
                         </tr>
                         <tr>
-                            <th>updated</th>
+                            <th>Updated</th>
                             <td th:text="${#calendars.format(owner.getUpdated(),'dd MMMM yyyy')}"></td>
                         </tr>
                     </table>

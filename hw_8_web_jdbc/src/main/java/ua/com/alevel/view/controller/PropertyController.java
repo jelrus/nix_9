@@ -34,15 +34,15 @@ public class PropertyController extends AbstractController {
     private HeaderName[] getColumnNames() {
         return new HeaderName[]{
                 new HeaderName("#", null, null),
-                new HeaderName("image", "image", "image"),
-                new HeaderName("status", "status", "status"),
-                new HeaderName("cost", "cost","cost"),
-                new HeaderName("firstname", "firstName", "first_name"),
-                new HeaderName("lastname", "lastName", "last_name"),
-                new HeaderName("email", "email", "email"),
-                new HeaderName("phone", "phone", "phone"),
-                new HeaderName("details", null, null),
-                new HeaderName("delete", null, null)
+                new HeaderName("Image", "image", "image"),
+                new HeaderName("Status", "status", "status"),
+                new HeaderName("Cost", "cost","cost"),
+                new HeaderName("First name", "firstName", "first_name"),
+                new HeaderName("Last name", "lastName", "last_name"),
+                new HeaderName("Email", "email", "email"),
+                new HeaderName("Phone", "phone", "phone"),
+                new HeaderName("Details", null, null),
+                new HeaderName("Delete", null, null)
         };
     }
 

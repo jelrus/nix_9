@@ -28,12 +28,12 @@ public class OwnerController extends AbstractController {
     private HeaderName[] getColumnNames() {
         return new HeaderName[]{
                 new HeaderName("#", null, null),
-                new HeaderName("firstname", "firstName", "first_name"),
-                new HeaderName("lastname", "lastName", "last_name"),
-                new HeaderName("email", "email", "email"),
-                new HeaderName("phone", "phone", "phone"),
-                new HeaderName("details", null, null),
-                new HeaderName("delete", null, null)
+                new HeaderName("First name", "firstName", "first_name"),
+                new HeaderName("Last name", "lastName", "last_name"),
+                new HeaderName("Email", "email", "email"),
+                new HeaderName("Phone", "phone", "phone"),
+                new HeaderName("Details", null, null),
+                new HeaderName("Delete", null, null)
         };
     }
 

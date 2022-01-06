@@ -12,7 +12,7 @@ create table houses(
   street varchar(255) not null,
   building_number varchar(255) not null,
   status enum('SALE', 'RENT'),
-  cost decimal not null
+  cost float not null
 );
 
 create table owners(

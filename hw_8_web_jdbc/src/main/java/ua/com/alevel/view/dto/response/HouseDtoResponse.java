@@ -13,7 +13,7 @@ public class HouseDtoResponse extends DtoResponse{
     private String street;
     private String buildingNumber;
     private Status status;
-    private BigDecimal cost;
+    private Double cost;
     private Long ownerCount;
 
     public HouseDtoResponse(House house) {
@@ -24,7 +24,7 @@ public class HouseDtoResponse extends DtoResponse{
         setStreet(house.getStreet());
         setBuildingNumber(house.getBuildingNumber());
         setStatus(house.getStatus());
-        setCost(house.getCost());
+        setCost(house.getCost().doubleValue());
     }
 
     public String getImage() {
@@ -75,11 +75,11 @@ public class HouseDtoResponse extends DtoResponse{
         this.status = status;
     }
 
-    public BigDecimal getCost() {
+    public Double getCost() {
         return cost;
     }
 
-    public void setCost(BigDecimal cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 

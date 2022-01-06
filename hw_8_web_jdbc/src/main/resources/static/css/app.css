@@ -19,6 +19,11 @@ a#add_new.btn.btn-primary{
     top: 25%;
 }
 
+img {
+    border-style: none;
+    position: relative;
+}
+
 button#dropdownMenuLink.btn.btn-primary.dropdown-toggle{
 background-color: rgba(231, 182, 92, 0.89);
 border-color: rgba(225, 159, 41, 0.89);
@@ -61,11 +66,13 @@ color: rgba(231, 182, 92, 0.89);
 .table-sm td, .table-sm th {
 padding: 0.3rem;
 vertical-align: middle;
+text-align: left;
 }
 
 .table td, .table th {
 padding: 0.75rem;
 vertical-align: middle;
+text-align: left;
 border-top: 1px solid #dee2e6;
 }
 

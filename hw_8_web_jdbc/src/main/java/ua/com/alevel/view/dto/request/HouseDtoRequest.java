@@ -1,5 +1,6 @@
 package ua.com.alevel.view.dto.request;
 
+import org.springframework.web.multipart.MultipartFile;
 import ua.com.alevel.persistence.entity.type.Status;
 
 import java.math.BigDecimal;

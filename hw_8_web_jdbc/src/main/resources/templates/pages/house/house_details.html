@@ -5,7 +5,7 @@
       layout:decorate="~{layout.html}">
 <head>
     <meta charset="utf-8">
-    <title>Details Group</title>
+    <title>House Details</title>
 </head>
 <body>
 
@@ -15,48 +15,45 @@
         <div class="col-12">
             <div class="card mb-2 mt-2">
                 <div class="card-header">
-                    Details Group
+                    House Details
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <img th:src="@{${house.getImage()}}" style="width: 100%"/>
+                    <table class="table table-hover" style="width:100%">
                         <tr>
-                            <th>id</th>
+                            <th>ID</th>
                             <td th:text="${house.getId()}"></td>
                         </tr>
                         <tr>
-                            <th>image</th>
-                            <td th:text="${house.getImage()}"></td>
-                        </tr>
-                        <tr>
-                            <th>country</th>
+                            <th>Country</th>
                             <td th:text="${house.getCountry()}"></td>
                         </tr>
                         <tr>
-                            <th>city</th>
+                            <th>City</th>
                             <td th:text="${house.getCity()}"></td>
                         </tr>
                         <tr>
-                            <th>street</th>
+                            <th>Street</th>
                             <td th:text="${house.getStreet()}"></td>
                         </tr>
                         <tr>
-                            <th>building number</th>
+                            <th>Building number</th>
                             <td th:text="${house.getBuildingNumber()}"></td>
                         </tr>
                         <tr>
-                            <th>status</th>
+                            <th>Status</th>
                             <td th:text="${house.getStatus()}"></td>
                         </tr>
                         <tr>
-                            <th>cost</th>
+                            <th>Cost</th>
                             <td th:text="${house.getCost()}"></td>
                         </tr>
                         <tr>
-                            <th>created</th>
+                            <th>Created</th>
                             <td th:text="${#calendars.format(house.getCreated(),'dd MMMM yyyy')}"></td>
                         </tr>
                         <tr>
-                            <th>updated</th>
+                            <th>Updated</th>
                             <td th:text="${#calendars.format(house.getUpdated(),'dd MMMM yyyy')}"></td>
                         </tr>
                     </table>

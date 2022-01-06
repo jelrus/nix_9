@@ -13,7 +13,6 @@ import ua.com.alevel.view.dto.request.HouseDtoRequest;
 import ua.com.alevel.view.dto.request.PageAndSizeData;
 import ua.com.alevel.view.dto.request.SortData;
 import ua.com.alevel.view.dto.response.HouseDtoResponse;
-import ua.com.alevel.view.dto.response.OwnerDtoResponse;
 import ua.com.alevel.view.dto.response.PageData;
 
 import java.util.List;

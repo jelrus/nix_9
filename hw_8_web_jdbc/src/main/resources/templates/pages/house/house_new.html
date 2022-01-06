@@ -19,9 +19,9 @@
                 </div>
                 <div class="card-body">
                     <form action="#" th:action="@{/houses/create}" th:object="${house}" method="post"
-                          class="needs-validation">
+                          class="needs-validation" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="image">House Image</label>
+                            <label for="image">House Image URL</label>
                             <input type="text" class="form-control" id="image" aria-describedby="image"
                                    placeholder="Enter house image" th:field="*{image} ">
                         </div>

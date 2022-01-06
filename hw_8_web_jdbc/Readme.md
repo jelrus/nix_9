@@ -1,4 +1,4 @@
-url: jdbc:mysql://localhost:3306/housing?useSSL=false&serverTimezone=UTC
+url: jdbc:mysql://localhost:3306/housing
 username: root
 password: rootroot
 

@@ -29,15 +29,15 @@ public class HouseController extends AbstractController {
     private HeaderName[] getColumnNames() {
         return new HeaderName[]{
                 new HeaderName("#", null, null),
-                new HeaderName("image", "image", "image"),
-                new HeaderName("country", "country", "country"),
-                new HeaderName("city", "city", "city"),
-                new HeaderName("street", "street", "street"),
-                new HeaderName("building number", "buildingNumber", "building_number"),
-                new HeaderName("status", "status", "status"),
-                new HeaderName("owner count", "ownerCount", "owner_count"),
-                new HeaderName("details", null, null),
-                new HeaderName("delete", null, null)
+                new HeaderName("Image", "image", "image"),
+                new HeaderName("Country", "country", "country"),
+                new HeaderName("City", "city", "city"),
+                new HeaderName("Street", "street", "street"),
+                new HeaderName("Building number", "buildingNumber", "building_number"),
+                new HeaderName("Status", "status", "status"),
+                new HeaderName("Cost", "cost", "cost"),
+                new HeaderName("Details", null, null),
+                new HeaderName("Delete", null, null)
         };
     }
 
