@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PageData<REQ extends DtoResponse> {
+public class PageData<RES extends DtoResponse> {
 
     private int currentPage;
     private int pageSize;
     private int totalPageSize;
     private long itemsSize;
-    private List<REQ> items;
+    private List<RES> items;
     private final int[] pageSizeItems;
     private boolean showFirst;
     private boolean showPrevious;
@@ -23,8 +23,8 @@ public class PageData<REQ extends DtoResponse> {
 
     public PageData() {
         this.currentPage = 0;
-        this.pageSize = 10;
-        this.totalPageSize = 0;
+        this.pageSize = 5;
+        this.totalPageSize = 10;
         this.itemsSize = 0;
         this.items = new ArrayList<>();
         this.pageSizeItems = new int[]{10, 25, 50, 100};
@@ -35,13 +35,19 @@ public class PageData<REQ extends DtoResponse> {
     }
 
     public void initPaginationState(int page) {
+        long from = (long) (page - 1) * pageSize + 1;
+        long to = (long) page * pageSize;
+        if (to > items.size()) {
+            to = items.size() + (long) pageSize * (page - 1);
+        }
+        this.setCurrentShowFromEntries(from);
+        this.setCurrentShowToEntries(to);
+        this.setItemsSize(items.size());
+        this.totalPageSize = (int) (itemsSize / pageSize + 1);
         this.showFirst = page != 1;
         this.showLast = page != totalPageSize;
         this.showNext = page != totalPageSize;
         this.showPrevious = page - 1 != 0;
-        this.totalPageSize = (int) (itemsSize % pageSize == 0 ? itemsSize / pageSize : itemsSize / pageSize + 1);
-        this.currentShowFromEntries = (long) (page - 1) * pageSize + 1;
-        this.currentShowToEntries = Math.min((long) page * pageSize, itemsSize);
     }
 
     public int getCurrentPage() {
@@ -76,11 +82,11 @@ public class PageData<REQ extends DtoResponse> {
         this.itemsSize = itemsSize;
     }
 
-    public List<REQ> getItems() {
+    public List<RES> getItems() {
         return items;
     }
 
-    public void setItems(List<REQ> items) {
+    public void setItems(List<RES> items) {
         this.items = items;
     }
 
@@ -159,6 +165,7 @@ public class PageData<REQ extends DtoResponse> {
                 ", pageSize=" + pageSize +
                 ", totalPageSize=" + totalPageSize +
                 ", itemsSize=" + itemsSize +
+                ", items=" + items +
                 ", pageSizeItems=" + Arrays.toString(pageSizeItems) +
                 ", showFirst=" + showFirst +
                 ", showPrevious=" + showPrevious +

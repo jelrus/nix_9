@@ -2,7 +2,7 @@ package ua.com.alevel.view.dto.response;
 
 import ua.com.alevel.persistence.entity.Owner;
 
-import java.util.Date;
+import java.util.Objects;
 
 public class OwnerDtoResponse extends DtoResponse{
 
@@ -10,6 +10,7 @@ public class OwnerDtoResponse extends DtoResponse{
     private String lastName;
     private String email;
     private String phone;
+    private Long houseCount;
 
     public OwnerDtoResponse(Owner owner) {
         super(owner.getId(), owner.getCreated(), owner.getUpdated());
@@ -49,6 +50,27 @@ public class OwnerDtoResponse extends DtoResponse{
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Long getHouseCount() {
+        return houseCount;
+    }
+
+    public void setHouseCount(Long houseCount) {
+        this.houseCount = houseCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OwnerDtoResponse that = (OwnerDtoResponse) o;
+        return Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email) && Objects.equals(phone, that.phone) && Objects.equals(houseCount, that.houseCount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, email, phone, houseCount);
     }
 
     @Override

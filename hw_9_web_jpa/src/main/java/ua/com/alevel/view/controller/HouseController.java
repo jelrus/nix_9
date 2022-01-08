@@ -8,11 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ua.com.alevel.facade.HouseFacade;
+import ua.com.alevel.facade.OwnerFacade;
 import ua.com.alevel.persistence.entity.type.Status;
 import ua.com.alevel.view.dto.request.HouseDtoRequest;
 import ua.com.alevel.view.dto.response.HouseDtoResponse;
+import ua.com.alevel.view.dto.response.OwnerDtoResponse;
 import ua.com.alevel.view.dto.response.PageData;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,9 +24,11 @@ import java.util.Map;
 public class HouseController extends AbstractController {
 
     private final HouseFacade houseFacade;
+    private final OwnerFacade ownerFacade;
 
-    public HouseController(HouseFacade houseFacade) {
+    public HouseController(HouseFacade houseFacade, OwnerFacade ownerFacade) {
         this.houseFacade = houseFacade;
+        this.ownerFacade = ownerFacade;
     }
 
     private HeaderName[] getColumnNames() {
@@ -100,8 +105,14 @@ public class HouseController extends AbstractController {
     @GetMapping("/update/{id}")
     public String update(@PathVariable Long id, Model model) {
         HouseDtoResponse houseResponseDto = houseFacade.findById(id);
+        List<OwnerDtoResponse> attachedOwners = houseFacade.findOwners(id);
+        List<OwnerDtoResponse> allOwners = ownerFacade.findAll();
+        List<OwnerDtoResponse> detachedOwners = new ArrayList<>(allOwners);
+        detachedOwners.removeAll(attachedOwners);
         model.addAttribute("house", houseResponseDto);
         model.addAttribute("status", Status.values());
+        model.addAttribute("attachedOwners", attachedOwners);
+        model.addAttribute("detachedOwners", detachedOwners);
         return "pages/house/house_update";
     }
 
@@ -120,13 +131,30 @@ public class HouseController extends AbstractController {
         return "pages/house/house_all";
     }
 
-
     @PostMapping("/all/owner/{ownerId}")
-    public ModelAndView findAllByOwnerRedirect(@PathVariable Long ownerId, WebRequest request, ModelMap model) {
+    public ModelAndView findAllByOwnersRedirect(@PathVariable Long ownerId, WebRequest request, ModelMap model) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         if (MapUtils.isNotEmpty(parameterMap)) {
             parameterMap.forEach(model::addAttribute);
         }
         return new ModelAndView("redirect:/houses/all/owner/" + ownerId, model);
+    }
+
+    @GetMapping("/remove/{houseId}+{ownerId}")
+    public String removeOwnerFromHouse(@PathVariable Long houseId, @PathVariable Long ownerId, Model model) {
+        houseFacade.removeOwner(houseId, ownerId);
+        List<OwnerDtoResponse> owners = houseFacade.findOwners(houseId);
+        model.addAttribute("house", houseFacade.findById(houseId));
+        model.addAttribute("owners", owners);
+        return "redirect:/houses/update/{houseId}";
+    }
+
+    @GetMapping("/add/{houseId}+{ownerId}")
+    public String addOwnerToHouse(@PathVariable Long houseId, @PathVariable Long ownerId, Model model){
+        houseFacade.addOwner(houseId, ownerId);
+        List<OwnerDtoResponse> owners = houseFacade.findOwners(houseId);
+        model.addAttribute("house", houseFacade.findById(houseId));
+        model.addAttribute("owners", owners);
+        return "redirect:/houses/update/{houseId}";
     }
 }
