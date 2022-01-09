@@ -71,7 +71,7 @@
                                                 <td th:text="${house.getStatus().name()}"></td>
                                                 <td th:text="${house.getCost()}"></td>
                                                 <td>
-                                                    <a th:href = "@{'/houses/remove/' + ${house.getId()} + '+' + ${owner.getId()}}" type = "button" class="btn btn-danger">remove</a>
+                                                    <a th:href = "@{'/owners/remove/' + ${house.getId()} + '+' + ${owner.getId()}}" type = "button" class="btn btn-danger">remove</a>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -110,7 +110,7 @@
                                                 <td th:text="${house.getStatus().name()}"></td>
                                                 <td th:text="${house.getCost()}"></td>
                                                 <td>
-                                                    <a th:href = "@{'/houses/add/' + ${house.getId()} + '+' + ${owner.getId()}}" type = "button" class="btn btn-primary">attach</a>
+                                                    <a th:href = "@{'/owners/add/' + ${house.getId()} + '+' + ${owner.getId()}}" type = "button" class="btn btn-primary">attach</a>
                                                 </td>
                                             </tr>
                                             </tbody>
