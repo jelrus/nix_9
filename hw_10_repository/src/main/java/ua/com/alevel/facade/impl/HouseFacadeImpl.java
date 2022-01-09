@@ -46,7 +46,7 @@ public class HouseFacadeImpl implements HouseFacade {
 
     @Override
     public void update(HouseDtoRequest houseDtoRequest, long id) {
-        House house = houseService.findById(id);
+        House house = houseService.findById(id).get();
         house.setId(id);
         house.setImage(houseDtoRequest.getImage());
         house.setCountry(houseDtoRequest.getCountry());
@@ -65,7 +65,7 @@ public class HouseFacadeImpl implements HouseFacade {
 
     @Override
     public HouseDtoResponse findById(long id) {
-        return new HouseDtoResponse(houseService.findById(id));
+        return new HouseDtoResponse(houseService.findById(id).get());
     }
 
     @Override

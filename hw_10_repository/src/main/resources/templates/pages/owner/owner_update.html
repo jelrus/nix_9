@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Update Owner</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>Update Owner</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{'/owners/update/' + ${owner.getId()}}" th:object="${owner}"
+                          method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName" aria-describedby="firstName"
+                                   placeholder="Enter firstname" th:field="*{firstName}">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" id="lastName" aria-describedby="lastName"
+                                   placeholder="Enter lastname" th:field="*{lastName}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" aria-describedby="email"
+                                   placeholder="Enter email" th:field="*{email}">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" class="form-control" id="phone" aria-describedby="phone"
+                                   placeholder="Enter phone" th:field="*{phone}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mb-2 mt-2">
+                                    <div class="card-header">
+                                        Attached houses
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-sm table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Image</th>
+                                                <th>Country</th>
+                                                <th>City</th>
+                                                <th>Status</th>
+                                                <th>Cost</th>
+                                                <th>Detach</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="house,iter : ${attachedHouses}">
+                                                <td th:text="${iter.count}"></td>
+                                                <td>
+                                                    <img th:src="@{${house.getImage()}}" width="60" height="40"/>
+                                                </td>
+                                                <td th:text="${house.getCountry()}"></td>
+                                                <td th:text="${house.getCity()}"></td>
+                                                <td th:text="${house.getStatus().name()}"></td>
+                                                <td th:text="${house.getCost()}"></td>
+                                                <td>
+                                                    <a th:href = "@{'/houses/remove/' + ${house.getId()} + '+' + ${owner.getId()}}" type = "button" class="btn btn-danger">remove</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mb-2 mt-2">
+                                    <div class="card-header">
+                                        Available houses
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-sm table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Image</th>
+                                                <th>Country</th>
+                                                <th>City</th>
+                                                <th>Status</th>
+                                                <th>Cost</th>
+                                                <th>Attach</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="house,iter : ${detachedHouses}">
+                                                <td th:text="${iter.count}"></td>
+                                                <td>
+                                                    <img th:src="@{${house.getImage()}}" width="60" height="40"/>
+                                                </td>
+                                                <td th:text="${house.getCountry()}"></td>
+                                                <td th:text="${house.getCity()}"></td>
+                                                <td th:text="${house.getStatus().name()}"></td>
+                                                <td th:text="${house.getCost()}"></td>
+                                                <td>
+                                                    <a th:href = "@{'/houses/add/' + ${house.getId()} + '+' + ${owner.getId()}}" type = "button" class="btn btn-primary">attach</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

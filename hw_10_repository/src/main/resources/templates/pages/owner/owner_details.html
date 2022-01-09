@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Owner Details</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header">
+                    Owner Details
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <td th:text="${owner.getId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>First name</th>
+                            <td th:text="${owner.getFirstName()}"></td>
+                        </tr>
+                        <tr>
+                            <th>Last name</th>
+                            <td th:text="${owner.getLastName()}"></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td th:text="${owner.getEmail()}"></td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td th:text="${owner.getPhone()}"></td>
+                        </tr>
+                        <tr>
+                            <th>Created</th>
+                            <td th:text="${#calendars.format(owner.getCreated(),'dd MMMM yyyy')}"></td>
+                        </tr>
+                        <tr>
+                            <th>Updated</th>
+                            <td th:text="${#calendars.format(owner.getUpdated(),'dd MMMM yyyy')}"></td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <div>
+                        <a th:href="@{'/owners/update/' + ${owner.getId()}}" type="button" class="btn btn-primary">
+                            Update Owner</a>
+                    </div>
+                    <hr>
+                    <div>
+                        <a th:href="@{'/houses/all/owner/' + ${owner.getId()}}" type="button"
+                           class="btn btn-primary">Show All Houses</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

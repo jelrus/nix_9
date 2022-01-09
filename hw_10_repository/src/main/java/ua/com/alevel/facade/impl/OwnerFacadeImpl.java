@@ -7,7 +7,6 @@ import ua.com.alevel.persistence.datatable.DataTableRequest;
 import ua.com.alevel.persistence.datatable.DataTableResponse;
 import ua.com.alevel.persistence.entity.House;
 import ua.com.alevel.persistence.entity.Owner;
-import ua.com.alevel.service.HouseService;
 import ua.com.alevel.service.OwnerService;
 import ua.com.alevel.util.facades.Converter;
 import ua.com.alevel.util.web.WebRequestUtil;
@@ -28,7 +27,7 @@ public class OwnerFacadeImpl implements OwnerFacade {
 
     private final OwnerService ownerService;
 
-    public OwnerFacadeImpl(OwnerService ownerService, HouseService houseService) {
+    public OwnerFacadeImpl(OwnerService ownerService) {
         this.ownerService = ownerService;
     }
 
@@ -44,7 +43,7 @@ public class OwnerFacadeImpl implements OwnerFacade {
 
     @Override
     public void update(OwnerDtoRequest ownerDtoRequest, long id) {
-        Owner owner = ownerService.findById(id);
+        Owner owner = ownerService.findById(id).get();
         owner.setId(id);
         owner.setFirstName(ownerDtoRequest.getFirstName());
         owner.setLastName(ownerDtoRequest.getLastName());
@@ -60,7 +59,7 @@ public class OwnerFacadeImpl implements OwnerFacade {
 
     @Override
     public OwnerDtoResponse findById(long id) {
-        return new OwnerDtoResponse(ownerService.findById(id));
+        return new OwnerDtoResponse(ownerService.findById(id).get());
     }
 
     @Override
@@ -113,13 +112,5 @@ public class OwnerFacadeImpl implements OwnerFacade {
     @Override
     public void removeHouse(Long houseId, Long ownerId) {
         ownerService.removeHouse(houseId, ownerId);
-    }
-
-    private List<OwnerDtoResponse> toDtoList(DataTableResponse<Owner> owners) {
-        return owners.getItems().
-                stream().
-                map(OwnerDtoResponse::new).
-                peek(dto -> dto.setHouseCount((Long) owners.getOtherParamMap().get(dto.getId()))).
-                collect(Collectors.toList());
     }
 }

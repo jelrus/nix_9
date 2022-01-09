@@ -31,8 +31,6 @@ public final class ResponseFormer {
 
     public static <E extends BaseEntity> List<E> getQueryResultList(DataTableRequest request, CriteriaQuery<E> query,
                                                                     EntityManager entityManager) {
-        System.out.println("page: " + getPage(request));
-        System.out.println("size: " + getSize(request));
         return entityManager.createQuery(query)
                             .setFirstResult(getPage(request))
                             .setMaxResults(getSize(request))
