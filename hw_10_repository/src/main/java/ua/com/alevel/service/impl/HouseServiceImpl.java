@@ -95,9 +95,7 @@ public class HouseServiceImpl implements HouseService {
         House house = baseHouseRepository.findById(houseRepository, houseId).get();
         Owner owner = baseOwnerRepository.findById(ownerRepository, ownerId).get();
         house.getOwners().add(owner);
-        owner.getHouses().add(house);
         baseHouseRepository.update(houseRepository, house);
-        baseOwnerRepository.update(ownerRepository, owner);
     }
 
     @Override
@@ -106,9 +104,7 @@ public class HouseServiceImpl implements HouseService {
         House house = baseHouseRepository.findById(houseRepository, houseId).get();
         Owner owner = baseOwnerRepository.findById(ownerRepository, ownerId).get();
         house.getOwners().remove(owner);
-        owner.getHouses().remove(house);
         baseHouseRepository.update(houseRepository, house);
-        baseOwnerRepository.update(ownerRepository, owner);
     }
 
     private void isValid(House house) {

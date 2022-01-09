@@ -94,9 +94,7 @@ public class OwnerServiceImpl implements OwnerService {
     public void addHouse(Long houseId, Long ownerId) {
         Owner owner = baseOwnerRepository.findById(ownerRepository, ownerId).get();
         House house = baseHouseRepository.findById(houseRepository, houseId).get();
-        house.getOwners().add(owner);
         owner.getHouses().add(house);
-        baseHouseRepository.update(houseRepository, house);
         baseOwnerRepository.update(ownerRepository, owner);
     }
 
@@ -105,9 +103,7 @@ public class OwnerServiceImpl implements OwnerService {
     public void removeHouse(Long houseId, Long ownerId) {
         Owner owner = baseOwnerRepository.findById(ownerRepository, ownerId).get();
         House house = baseHouseRepository.findById(houseRepository, houseId).get();
-        house.getOwners().remove(owner);
         owner.getHouses().remove(house);
-        baseHouseRepository.update(houseRepository, house);
         baseOwnerRepository.update(ownerRepository, owner);
     }
 
