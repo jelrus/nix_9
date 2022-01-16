@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Select Account</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>Select account</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <form action="#"
+                              th:action="@{'/clients/client/' + ${clientId} + '/account/' + ${senderId} + '/transaction/new/'}"
+                              th:object="${recipient}"
+                              method="post" enctype="multipart/form-data">
+                            <label for="accountNumber">Account number</label>
+                            <select class="form-control" id="accountNumber" th:field="${recipient.accountNumber}">
+                                <option th:each="recipient, iter : ${accounts}"
+                                        th:value="${recipient.getAccountNumber()}"
+                                        th:text="${recipient.getAccountNumber()}">
+
+                                </option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Next</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

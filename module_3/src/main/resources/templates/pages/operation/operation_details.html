@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Operation Details</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a th:href="@{'/clients/'}"
+                       type="button"
+                       class="btn btn-primary">Back to all clients</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button"
+                       class="btn btn-primary"><<</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{'/clients/client/' + ${clientId} + '/details/'}"
+                       type="button"
+                       class="btn btn-primary">Back to client info</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button"
+                       class="btn btn-primary"><<</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{'/clients/client/' + ${clientId} + '/accounts'}"
+                       type="button"
+                       class="btn btn-primary">Back to accounts</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button"
+                       class="btn btn-primary"><<</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{'/clients/client/' + ${clientId} + '/account/' + ${accountId} + '/details/'}"
+                       type="button"
+                       class="btn btn-primary">Back to account info</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button"
+                       class="btn btn-primary"><<</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{'/clients/client/' + ${clientId} + '/account/' + ${accountId} + '/operations'}"
+                       type="button"
+                       class="btn btn-primary">Back to operations</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header" id="heading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapse"
+                                aria-expanded="false" aria-controls="collapse">
+                            Operation Info
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse" class="accordion" aria-labelledby="heading"
+                     data-parent="#accordionExample">
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <tr>
+                                <th>ID</th>
+                                <td th:text="${operation.id}"></td>
+                            </tr>
+                            <tr>
+                                <th>Created on</th>
+                                <td th:text="${operation.created}"></td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td th:text="${operation.name}"></td>
+                            </tr>
+                            <tr>
+                                <th>Type</th>
+                                <td th:text="${operation.operationType.name()}"></td>
+                            </tr>
+                            <tr>
+                                <th>Sum</th>
+                                <td th:text="${operation.sum}"></td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td th:text="${operation.description}"></td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <div>
+                            <a th:href="@{'/clients/client/' + ${clientId} + '/account/' + ${accountId} + '/update/operation/' + ${operation.id}}"
+                               type="button"
+                               class="btn btn-primary">Update Operation Info</a>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

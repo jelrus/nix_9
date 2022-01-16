@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>New Operation</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New Operation</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{'/clients/client/' + ${client.getId()} + '/account/' + ${account.getId()} + '/create/operation'}"
+                          th:object="${operation}" method="post"
+                          class="needs-validation" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="name"
+                                   placeholder="Enter name" th:field="*{name}">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <select class="form-control" id="type" th:field="*{operationType}">
+                                <option th:each="type : ${operationType}"
+                                        th:value="${type}"
+                                        th:text="${type}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sum">Sum</label>
+                            <input type="text" class="form-control" id="sum" aria-describedby="sum"
+                                   placeholder="Enter sum" th:field="*{sum}">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" aria-describedby="description"
+                                   placeholder="Enter description" th:field="*{description}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

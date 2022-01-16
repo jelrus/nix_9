@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+html,body {
+    background: url('https://image.freepik.com/free-vector/abstract-background-design-emerald-green_53876-43540.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    font-family: 'Rubik', sans-serif;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+a#add_new.btn.btn-primary{
+    background-color: rgb(9, 229, 157);
+    border-color: rgb(9, 229, 157);
+    color: #ffffff;
+    width: 100px;
+    position: relative;
+    top: 25%;
+}
+
+a.btn.btn-success{
+    background-color: rgb(9, 229, 157);
+    border-color: rgb(9, 229, 157);
+    color: #ffffff;
+    width: 100px;
+    position: relative;
+    top: 25%;
+}
+
+img {
+    border-style: none;
+    position: relative;
+}
+
+button#dropdownMenuLink.btn.btn-primary.dropdown-toggle{
+background-color: rgb(9, 229, 157);
+border-color: rgb(9, 229, 157);
+color: #ffffff;
+}
+
+button.btn.btn-primary{
+background-color: rgb(9, 229, 157);
+border-color: rgb(9, 229, 157);
+color: #ffffff;
+}
+
+a.button.btn.btn-primary{
+background-color: rgb(9, 229, 157);
+border-color: rgb(9, 229, 157);
+color: #ffffff;
+}
+
+a.btn.btn-primary{
+background-color: rgb(9, 229, 157);
+border-color: rgb(9, 229, 157);
+color: #ffffff;
+}
+
+a.btn.page-link{
+background-color: rgb(255, 253, 253);
+border-color: rgba(255, 255, 255, 0.89);
+}
+
+a.btn.btn-danger{
+background-color: rgb(7, 155, 95);
+border-color: rgb(7, 155, 95);
+color: #ffffff;
+}
+
+.table-sm td, .table-sm th {
+padding: 0.3rem;
+vertical-align: middle;
+text-align: left;
+}
+
+.table td, .table th {
+padding: 0.75rem;
+vertical-align: middle;
+text-align: left;
+border-top: 1px solid #dee2e6;
+}
+
+i.fa.fa-fast-backward{
+    color: rgb(9, 229, 157);
+}
+
+i.fa.fa-backward{
+    color: rgb(9, 229, 157);
+}
+
+i.fa.fa-forward{
+    color: rgb(9, 229, 157);
+}
+
+i.fa.fa-fast-forward{
+    color: rgb(9, 229, 157);
+}
+
+i.fa.fa-trash{
+    color: rgb(9, 229, 157);
+}
+
+i.fa.fa-refresh{
+    color: rgb(9, 229, 157);
+}
+
+li.page-item.disabled{
+    color: rgb(0, 0, 0);
+}
+
+a.page-link{
+    color: rgb(0, 0, 0);
+}
+
+.navbar-custom {
+background-color: rgb(3, 161, 111);
+}
+
+a.nav-item.nav-link {
+color: #fffdfd;
+}
+
+.sort {
+cursor: pointer;
+margin-right: 2em;
+}
+
+#buttonInHeader{
+    background-color: rgb(12, 173, 109);
+    border-color: rgb(12, 173, 109);
+}
+
+nav.navbar.navbar-expand-lg.navbar-light.navbar-custom{
+    background-color: rgb(9, 229, 157);
+    border-color: rgb(9, 229, 157);
+    color: #ffffff;
+}
+
+div#navbarSupportedContent{
+    background-color: rgb(9, 229, 157);
+    border-color: rgb(9, 229, 157);
+    color: #ffffff;
+}
+
+ul.navbar-nav.mr-auto{
+    background-color: rgb(9, 229, 157);
+    border-color: rgb(9, 229, 157);
+    color: #ffffff;
+}

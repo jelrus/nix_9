@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Client's Operations</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a th:href="@{'/clients/'}"
+                       type="button"
+                       class="btn btn-primary">Back to all clients</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button"
+                       class="btn btn-primary"><<</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{'/clients/client/' + ${clientId} + '/details/'}"
+                       type="button"
+                       class="btn btn-primary">Back to client info</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button"
+                       class="btn btn-primary"><<</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{'/clients/client/' + ${clientId} + '/accounts'}"
+                       type="button"
+                       class="btn btn-primary">Back to accounts</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button"
+                       class="btn btn-primary"><<</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{'/clients/client/' + ${clientId} + '/account/' + ${account.getId()} + '/details/'}"
+                       type="button"
+                       class="btn btn-primary">Back to account info</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                Client's operations
+            </h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-sm table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Created</th>
+                    <th>Name</th>
+                    <th>Operation type</th>
+                    <th>Sum</th>
+                    <th>Description</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="operation, iter : ${attachedOperations}">
+                    <td th:text="${iter.count}"></td>
+                    <td th:text="${operation.created}"></td>
+                    <td th:text="${operation.name}"></td>
+                    <td th:text="${operation.operationType.name()}"></td>
+                    <td th:text="${operation.sum}"></td>
+                    <td th:text="${operation.description}"></td>
+                    <td>
+                        <a th:href="@{'/clients/client/'+ ${clientId} + '/account/' + ${accountId} + '/operation/' + ${operation.id} + '/details'}"
+                           type="button"
+                           class="btn btn-primary">
+                            Details
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/clients/client/' + ${clientId} + '/account/' + ${accountId} + '/delete/'+ ${operation.getId()}}"
+                           type="button" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <hr>
+            <div>
+                <a  th:href="@{'/clients/client/' + ${clientId} + '/account/' + ${accountId} + '/new/operation'}"
+                   type="button"
+                   class="btn btn-primary">Add operation</a>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+</body>
+</html>

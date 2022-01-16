@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Client Details</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a th:href="@{'/clients/'}"
+                       type="button"
+                       class="btn btn-primary">Back to all clients</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header" id="heading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapse"
+                                aria-expanded="false" aria-controls="collapse">
+                            Client Info
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse" class="accordion" aria-labelledby="heading"
+                     data-parent="#accordionExample">
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <tr>
+                                <th>ID</th>
+                                <td th:text="${client.id}"></td>
+                            </tr>
+                            <tr>
+                                <th>First name</th>
+                                <td th:text="${client.firstName}"></td>
+                            </tr>
+                            <tr>
+                                <th>Last name</th>
+                                <td th:text="${client.lastName}"></td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td th:text="${client.email}"></td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td th:text="${client.phone}"></td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <div>
+                            <a th:href="@{'/clients/update/' + ${client.id}}"
+                               type="button"
+                               class="btn btn-primary">Update Client Info</a>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseTwo"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                    Accounts
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="accordion" aria-labelledby="headingTwo"
+             data-parent="#accordionExample">
+            <div class="card-body">
+                <table class="table table-sm table-hover">
+                    <thead>
+                    <tr data-toggle='collapse' data-target='#info_1' id="myTable">
+                        <th>#</th>
+                        <th>Created</th>
+                        <th>Account number</th>
+                        <th>Balance</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="account, iter : ${attachedAccounts}" th:id = "'custom_row' + ${account.getId()}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${account.created}"></td>
+                        <td th:text="${account.accountNumber}"></td>
+                        <td th:text="${account.balance}"></td>
+                        <td>
+                            <a th:href="@{'/clients/client/' + ${client.getId()} + '/account/' + ${account.getId()} + '/details/'}"
+                               type="button"
+                               class="btn btn-primary">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <div>
+                    <a th:href="@{'/clients/client/' + ${client.id} + '/accounts'}"
+                       type="button"
+                       class="btn btn-primary">Manage accounts</a>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

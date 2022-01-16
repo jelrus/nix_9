@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Client's Accounts</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a th:href="@{'/clients/'}"
+                       type="button"
+                       class="btn btn-primary">Back to all clients</a>
+                </li>
+                <li class="nav-item">
+                    <a type="button"
+                       class="btn btn-primary"><<</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{'/clients/client/' + ${client.id} + '/details/'}"
+                       type="button"
+                       class="btn btn-primary">Back to client info</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                Client's accounts
+            </h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-sm table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Created</th>
+                    <th>Account number</th>
+                    <th>Balance</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="account, iter : ${attachedAccounts}">
+                    <td th:text="${iter.count}"></td>
+                    <td th:text="${account.created}"></td>
+                    <td th:text="${account.accountNumber}"></td>
+                    <td th:text="${account.balance}"></td>
+                    <td>
+                        <a th:href="@{'/clients/client/' + ${client.getId()} + '/account/' + ${account.getId()} + '/details/'}"
+                           type="button"
+                           class="btn btn-primary">
+                           Details
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/clients/client/' + ${client.getId()} + '/delete/account/' + ${account.getId()}}"
+                           type="button" class="btn btn-danger">
+                           Delete
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <hr>
+            <div>
+                <a th:href="@{'/clients/client/' + ${client.getId()} + '/new/account/'}"
+                   type="button"
+                   class="btn btn-primary">Add account</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
