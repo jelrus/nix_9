@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{fragments/user_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Post</title>
+</head>
+
+<body id="posts-open" style="padding-top: 0">
+
+<div layout:fragment="personal_content" id="fragment-posts-main" style="padding-top: 40px">
+    <div class="card-group" id="card-group-main">
+        <div class="cols" id="rating-column">
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(-1) or opinionService.opinionStatus(post.getId()).equals(0)}">
+                <div class="rows" id="thumb-up">
+                    <a class="btn btn-dark" id="like-button-active"
+                       th:href="@{'/user/like/post=' + ${post.getId()}}"
+                       type="button">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(1)}">
+                <div class="rows" id="like-button-inactive">
+                    <i class="fa fa-chevron-up" aria-hidden="true" style="color: orangered"></i>
+                </div>
+            </div>
+
+            <div class="rows" id="rating-row" th:text="${post.getRating()}"></div>
+
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(1) or opinionService.opinionStatus(post.getId()).equals(0)}">
+                <div class="rows" id="thumb-down">
+                    <a class="btn btn-dark" id="dislike-button-active"
+                       th:href="@{'/user/dislike/post=' + ${post.getId()}}"
+                       type="button" th:action="@{'/user/dislike/post=' + ${post.getId()}}">
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(-1)}">
+                <div class="rows" id="dislike-button-inactive">
+                    <i class="fa fa-chevron-down" aria-hidden="true" style="color: orangered"></i>
+                </div>
+            </div>
+        </div>
+        <div class="cols" id="general-column">
+            <div class="rows" id="date-row">
+                <div class="cols" id="posted-by" th:text="'Posted by '"></div>
+                <a class="cols" id="user" th:text="${allUsers.findUsernameById(post.getUserId())}"
+                   th:href="@{'/user/profile/' + ${allUsers.findUsernameById(post.getUserId())} + '/posts'}"></a>
+                <div class="cols" id="post-created-date" th:text="' on ' + ${post.getCreated()}"></div>
+            </div>
+            <div class="rows" id="title-row" th:text="${post.getTitle()}"></div>
+            <img id="preview" th:src="@{${post.getHeaderPic()}}" alt="No image provided">
+            <div class="rows" id="body-row-full-page" th:text="${post.getBody()}"></div>
+            <div class="row">
+                <div class="column">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </div>
+                <div class="column" id="comment-row2" th:text="${post.getComments().size()} + ' Comments'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="comment-card-open" th:if="${!comments.isEmpty() and comments!=null }">
+        <div class="rows" id="rows-comment-open" th:each="comment : ${comments}">
+            <div class="rows" id="user-row-open">
+                <img class="cols" id="user-pic-open"
+                     th:src="@{${commentFacade.findUserByCommentId(comment.getId()).getProfilePic()}}">
+                <div class="cols" id="user-comment-row-open">
+                    <a class="cols" id="user-comment" th:text="${commentFacade.findUserByCommentId(comment.getId()).getUsername()}"
+                       th:href="@{'/user/profile/' + ${commentFacade.findUserByCommentId(comment.getId()).getUsername()} + '/posts'}"></a>
+                    <div class="cols" id="created-on" th:text="' on ' + ${comment.getCreated()}"></div>
+                </div>
+            </div>
+            <div class="rows" id="comment-body-open" th:text="${comment.getBody()}"></div>
+        </div>
+    </div>
+
+    <div class="card" id="comment-div">
+        <form action="#" th:action="@{'/user/open/posts/' + ${post.getId()} + '/comments'}"
+              th:object="${commentDto}" method="post"
+              class="needs-validation" id="form-action-comment" enctype="multipart/form-data">
+            <div class="form-group" id="form-comment">
+                <label for="text-area-comment" id="label-comment"
+                       th:text="'Comment as ' + ${user.getUsername()}"> </label>
+                <textarea class="form-control" id="text-area-comment" rows="4"
+                          th:field="*{body}" placeholder="Put some text here..."></textarea>
+            </div>
+            <button type="submit" id="submit-button-comment" class="btn btn-primary">Leave comment</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

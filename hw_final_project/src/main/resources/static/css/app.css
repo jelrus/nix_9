@@ -1,0 +1,1206 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+body {
+    background-color: black;
+    background-size: cover;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    padding-top: 80px;
+}
+
+@media (max-width: 979px) {
+    body{
+        padding-top: 0;
+    }
+}
+
+a.nav-item.nav-link {
+    color: white;
+}
+
+#nav-bar-menu{
+    right: 0;
+    margin-right: 40px;
+    padding-top: 8px;
+    margin-top: 6px;
+}
+
+#nav-bar-menu2{
+    right: 0;
+    margin-right: 40px;
+    padding-top: 8px;
+    margin-top: 6px;
+}
+
+.sort {
+    cursor: pointer;
+    margin-right: 2em;
+}
+
+.pt-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.dropdown-menu{
+    color: white;
+    background-color: #212529;
+}
+
+.dropdown-item{
+    color: white;
+    background-color: #212529;
+}
+
+#card-body-user{
+    color: white;
+    background-color: #212529;
+}
+
+#card-user{
+    float: none;
+    margin: 50px auto 0;
+    width: 60rem;
+    height: 55rem;
+}
+
+#user-edit-profile{
+    border-color: white;
+    font-size: 20px;
+}
+
+p.card-text{
+    font-size: 20px;
+}
+
+#posts-user{
+    background-color: deepskyblue;
+    font-size: 20px;
+    height: 227px;
+}
+
+#comments-user{
+    background-color: forestgreen;
+    font-size: 20px;
+    height: 227px;
+}
+
+#likes-user{
+    background-color: orange;
+    font-size: 20px;
+    height: 227px;
+}
+
+#dislikes-user{
+    background-color: firebrick;
+    font-size: 20px;
+    height: 227px;
+}
+
+#posts-user-inner{
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    line-height:160px;
+    height: 160px;
+}
+
+#comments-user-inner{
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    line-height:160px;
+    height: 160px;
+}
+
+#likes-user-inner{
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    line-height:160px;
+    height: 160px;
+}
+
+#dislikes-user-inner{
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    line-height:160px;
+    height: 160px;
+}
+
+#firstNameEditing{
+    width: 425px
+}
+
+#lastNameEditing{
+    width: 425px;
+}
+
+#emailEditing{
+    width: 425px;
+}
+
+#passwordEditing{
+    width: 425px;
+}
+
+#card-body-editing{
+    border-color: #212529;
+    width: 460px;
+    float: none;
+    margin: 50px auto 0;
+    height: 610px;
+}
+
+#card-body-user-editing{
+    color: white;
+    background-color: #212529;
+}
+
+#user-edit-profile-submit{
+    border: 2px solid #181c1e;
+    border-radius: 20px;
+    background-color: #181c1e;
+    color: white;
+}
+
+#card-post-user{
+    width: 1300px;
+    float: none;
+    margin: 50px auto 0;
+    height: auto;
+}
+
+#card-post-post{
+    width: 1300px;
+    float: none;
+    margin: 50px auto 0;
+    height: auto;
+}
+
+#card-header-post-post{
+    font-size: 20px;
+    color: white;
+    background-color: #212529;
+}
+
+#card-body-post-post{
+    color: white;
+    background-color: #212529;
+}
+
+#nav-item-dropdown{
+    right: 4px;
+    left: auto;
+}
+
+#card-main{
+    background-color: #212529;
+    color: white;
+    width: auto;
+    margin-top: auto;
+}
+
+#rating-column{
+    padding-top: 20px;
+    border: 2px solid transparent;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 100px;
+    height: auto;
+    background-color: #181c1e;
+    color: white;
+    text-align: center;
+}
+
+#general-column{
+    border: 2px solid transparent;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 900px;
+    height: auto;
+    background-color: #212529;
+    color: white;
+    text-align: center;
+}
+
+#picture-row{
+    border-color: transparent;
+    width: 365px;
+    height: 510px;
+    background-color: #212529;
+    color: white;
+}
+
+#preview{
+    padding-top: 20px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+i.fa.fa-chevron-up, i.fa.fa-chevron-down{
+    font-size: 30px;
+}
+
+#rating-row{
+    font-size: 20px;
+}
+
+#title-row{
+    padding-left: 20px;
+    padding-top: 10px;
+    font-size: 18px;
+    overflow-wrap: break-word;
+    background-color: #212529;
+    color: #d7dadc;
+    width: auto;
+    height: auto;
+    text-align: left;
+}
+
+#body-row{
+    display: -webkit-box;
+    max-width: 100%;
+    height: auto;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.625;
+    color: #d7dadc;
+    padding-top: 20px;
+    font-size: 14px;
+    padding-left: 20px;
+    overflow-wrap: break-word;
+    background-color: #212529;
+    width: auto;
+    text-align: left;
+}
+
+#body-row-full-page{
+    max-width: 100%;
+    height: auto;
+    line-height: 1.625;
+    color: #d7dadc;
+    padding-top: 20px;
+    font-size: 14px;
+    padding-left: 20px;
+    overflow-wrap: break-word;
+    background-color: #212529;
+    width: auto;
+    text-align: justify;
+    padding-right: 20px;
+}
+
+#comment-row{
+    padding-bottom: 0;
+    padding-top: 18px;
+    padding-left: 0;
+    color: #4d7dc4;
+    font-size: 14px;
+    background-color: #212529;
+    width: auto;
+    height: auto;
+    text-align: left;
+    text-decoration: transparent;
+}
+
+#date-row{
+    font-size: 12px;
+    padding-top: 10px;
+    padding-left: 20px;
+    overflow-wrap: break-word;
+    background-color: #212529;
+    color: white;
+    width: auto;
+    text-align: left;
+}
+
+#card-group-main{
+    padding-bottom: 40px;
+    width: 1000px;
+}
+
+#posts-open{
+    text-align:center;
+}
+
+#fragment-posts-main{
+    display:inline-block;
+}
+
+.column {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    vertical-align: center;
+    float: left;
+    width: auto;
+}
+
+.row{
+    padding-top: 20px;
+    vertical-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+}
+
+div#comment-row.column{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    vertical-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+}
+
+.row:after {
+    vertical-align: center;
+    content: "";
+    display: table;
+    clear: both;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#user-dashboard-body{
+    padding-top: 0;
+}
+
+#open-main-nav{
+    text-align: right;
+}
+
+#divider-open{
+    width: 548px;
+}
+
+#read-full-open{
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+}
+
+#read-open-button{
+    border-radius: 0;
+    color: #fff;
+    background-color: #181c1e;
+    border-color: transparent;
+}
+
+#comment-card-open{
+    width: 1000px;
+    background-color: #212529;
+    color: white;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+#rows-comment-open{
+    background-color: #212529;
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#user-row-open{
+    background-color: #212529;
+    color: white;
+}
+
+#user-pic-open{
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: #212529;
+    color: white;
+    float: left;
+}
+
+#user-pic-open:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#user-comment-row-open{
+    text-align: left;
+    font-size: 12px;
+    background-color: #212529;
+    color: white;
+    padding-left: 30px;
+    height: 36px;
+    padding-top: 6px;
+    margin-left: 10px;
+}
+
+#comment-body-open{
+    max-width: 100%;
+    height: auto;
+    line-height: 1.625;
+    color: #d7dadc;
+    padding-top: 0;
+    font-size: 14px;
+    padding-left: 40px;
+    overflow-wrap: break-word;
+    background-color: #212529;
+    width: auto;
+    text-align: justify;
+    padding-right: 40px;
+}
+
+#comment-card-open2{
+    width: 1000px;
+    background-color: #212529;
+    color: white;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+#rows-comment-open2{
+    background-color: #212529;
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#user-row-open2{
+    background-color: #212529;
+    color: white;
+}
+
+#user-pic-open2{
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: #212529;
+    color: white;
+    float: left;
+}
+
+#user-pic-open2:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#user-comment-row-open2{
+    text-align: left;
+    font-size: 12px;
+    background-color: #212529;
+    color: white;
+    padding-left: 30px;
+    height: 36px;
+    padding-top: 6px;
+    margin-left: 10px;
+}
+
+#comment-div{
+    width: auto;
+    margin-bottom: 40px;
+    background-color: #212529;
+    color: white;
+}
+
+#label-comment{
+    background-color: #212529;
+    color: white;
+    text-align: left;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-bottom: 8px;
+}
+
+#form-comment{
+    background-color: #212529;
+    color: white;
+}
+
+#form-action-comment{
+    background-color: #212529;
+    color: white;
+    text-align: left;
+}
+
+#text-area-comment{
+    background-color: #212529;
+    margin-left: 15px;
+    width: 955px;
+    color: white;
+}
+
+#submit-button-comment{
+    border: 2px solid #181c1e;
+    border-radius: 20px;
+    background-color: #181c1e;
+    color: white;
+    margin: 15px;
+}
+
+#divider-personal-posts{
+    width: 240px;
+}
+
+#divider-personal-posts2{
+    width: 548px;
+}
+
+#edit-post{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#edit-post-button{
+    border-radius: 0;
+    color: #fff;
+    background-color: #181c1e;
+    border-color: transparent;
+}
+
+#delete-post{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#delete-post-button{
+    border-radius: 0;
+    color: #fff;
+    background-color: #181c1e;
+    border-color: transparent;
+}
+
+#no-posts{
+    background-color: #212529;
+    width: 1000px;
+    height: 746px;
+}
+
+#no-posts-span{
+    padding-top: 275px;
+    background-color: #212529;
+}
+
+#sad-face{
+    font-size: 75px;
+    color: #46535b;;
+}
+
+#no-posts-message{
+    font-size: 75px;
+    color: #46535b;
+    margin-left: 20px;
+}
+
+#no-posts-message2{
+    font-size: 45px;
+    color: #46535b;
+}
+
+#create-post-button{
+    font-size: 18px;
+    border-color: #181c1e;
+    color: #aac3d3;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    background-color: #181c1e;
+}
+
+#card-body-post-creation{
+    background-color: #212529;
+    width: 1000px;
+    height: 746px;
+    border-color: #212529;
+    float: none;
+    margin: 50px auto 0;
+}
+
+#card-body-user-create-post{
+    color: white;
+    background-color: #212529;
+}
+
+#headerPicturePostCreate{
+    color: #46535b;
+    background-color: #212529;
+}
+
+#titlePostCreate{
+    color: #46535b;
+    background-color: #212529;
+}
+
+#text-area-post-create{
+    color: #46535b;
+    background-color: #212529;
+}
+
+#rows-comments-all{
+    background-color: #212529;
+    color: white;
+}
+
+#user-rows-comments-all{
+    background-color: #212529;
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#user-rows-comments-all2{
+    background-color: #212529;
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#user-pic-comments-all{
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: #212529;
+    color: white;
+    float: left;
+}
+
+#user-comments-row-all{
+    text-align: left;
+    font-size: 12px;
+    background-color: #212529;
+    color: white;
+    padding-left: 30px;
+    height: 36px;
+    padding-top: 6px;
+    margin-left: 10px;
+}
+
+#comment-card-user{
+    flex: 100%;
+    width: 1000px;
+    background-color: #212529;
+    color: white;
+    margin-bottom: 50px;
+}
+
+#comment-body-all{
+    max-width: 100%;
+    height: auto;
+    line-height: 1.625;
+    color: #d7dadc;
+    padding-top: 0;
+    font-size: 16px;
+    padding-left: 58px;
+    overflow-wrap: break-word;
+    background-color: #212529;
+    width: auto;
+    text-align: justify;
+    padding-right: 40px;
+}
+
+#divider-personal-comments{
+    width: 440px;
+}
+
+#label-description{
+    background-color: #212529;
+    color: white;
+    text-align: left;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#text-area-description{
+    background-color: #212529;
+    width: 425px;
+    color: white;
+}
+
+#profile-reference{
+    top: 105px;
+    background-color: #212529;
+    color: white;
+    position: fixed;
+    right: 0;
+    margin-right: 100px;
+    width: 450px;
+    height: auto;
+}
+
+#user-pic-reference{
+    border-radius: 100%;
+    background-color: #212529;
+    color: white;
+    width: 80px;
+    margin-top: 20px;
+}
+
+#username-reference{
+    background-color: #212529;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#collapse-about-button{
+    text-decoration: transparent;
+    border-radius: 0;
+    margin-top: 10px;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#exclamation-mark{
+    text-align: center;
+}
+
+#hello-reference{
+    margin-left: 0;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#name-reference{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#lastName-reference{
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+#created-reference{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#story-heading-reference{
+    font-size: 14px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#story-reference{
+    text-align: justify;
+    text-wrap: normal;
+    font-size: 14px;
+    margin-left: 0;
+    padding-top: 5px;
+}
+
+#edit-profile-button-reference-menu{
+    border-color: #181c1e;
+    border-radius: 0;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#create-new-post-button-reference-menu{
+    border-color: #181c1e;
+    border-radius: 0;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#my-posts-button-reference-menu{
+    border-color: #181c1e;
+    border-radius: 0;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#my-comments-button-reference-menu{
+    border-color: #181c1e;
+    border-radius: 0;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#collapse-statistic-button{
+    text-decoration: transparent;
+    border-radius: 0;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#collapse-statistic-button:after{
+    vertical-align: center;
+    content: "";
+    display: table;
+    clear: both;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#total-posts{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    color: white;
+    background-color: #212529;
+}
+
+#total-comments{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    color: white;
+    background-color: #212529;
+}
+
+#total-likes{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    color: white;
+    background-color: #212529;
+}
+
+#total-dislikes{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    color: white;
+    background-color: #212529;
+}
+
+#total-rating{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    color: white;
+    background-color: #212529;
+}
+
+#total-posts-text0{
+    float: left;
+    padding-left: 0;
+    margin-left: 20px;
+}
+
+#total-posts-text1{
+    margin-left: 8px;
+    float: left;
+}
+
+#total-posts-text3{
+    width: 0;
+    margin-left: 85px;
+}
+
+#total-comments-text0{
+    float: left;
+    padding-left: 0;
+    margin-left: 20px;
+}
+
+#total-comments-text1{
+    margin-left: 8px;
+    float: left;
+}
+
+#total-comments-text2{
+    width: 0;
+    margin-left: 30px;
+    float: left;
+}
+
+#total-comments-text3{
+    width: 0;
+    margin-left: 40px;
+}
+
+#total-likes-text0{
+    float: left;
+    padding-left: 0;
+    margin-left: 20px;
+}
+
+#total-likes-text1{
+    margin-left: 8px;
+    float: left;
+}
+
+#total-likes-text2{
+    width: 0;
+    margin-left: 30px;
+    float: left;
+}
+
+#total-likes-text3{
+    width: 0;
+    margin-left: 90px;
+}
+
+#total-dislikes-text0{
+    float: left;
+    padding-left: 0;
+    margin-left: 20px;
+}
+
+#total-dislikes-text1{
+    margin-left: 8px;
+    float: left;
+}
+
+#total-dislikes-text2{
+    width: 0;
+    margin-left: 30px;
+    float: left;
+}
+
+#total-dislikes-text3{
+    width: 0;
+    margin-left: 66px;
+}
+
+#total-rating-text0{
+    float: left;
+    padding-left: 0;
+    margin-left: 20px;
+}
+
+#total-rating-text1{
+    margin-left: 8px;
+    float: left;
+}
+
+#total-rating-text2{
+    width: 0;
+    margin-left: 30px;
+    float: left;
+}
+
+#total-rating-text3{
+    width: 0;
+    margin-left: 75px;
+}
+
+#posted-by{
+    float: left;
+    padding-right: 5px;
+}
+
+#user{
+    color: #4d7dc4;
+    float: left;
+    padding-right: 5px;
+    text-decoration: transparent;
+}
+
+#user-comment{
+    color: #4d7dc4;
+    float: left;
+    padding-right: 5px;
+    text-decoration: transparent;
+}
+
+#comment-user-on{
+    color: #4d7dc4;
+    float: left;
+    padding-right: 5px;
+    text-decoration: transparent;
+}
+
+#title{
+    float: left;
+    padding-right: 5px;
+}
+
+#post-by-title{
+    color: #4d7dc4;
+    float: left;
+    padding-right: 5px;
+    text-decoration: transparent;
+}
+
+#comment-row2{
+    padding-bottom: 0;
+    padding-top: 18px;
+    padding-left: 0;
+    color: white;
+    font-size: 14px;
+    background-color: #212529;
+    width: auto;
+    height: auto;
+    text-align: left;
+    text-decoration: transparent;
+}
+
+#no-posts-span-main{
+    padding-top: 110px;
+    background-color: #212529;
+}
+
+#no-posts-message2{
+    margin-left: 8px;
+    font-size: 45px;
+    color: #46535b;
+}
+
+#no-posts-message3{
+    font-size: 45px;
+    color: #46535b;
+}
+
+#create-post-button2{
+    font-size: 18px;
+    border-color: #181c1e;
+    color: #aac3d3;
+    margin-bottom: 15px;
+    background-color: #181c1e;
+}
+
+#main-table{
+    width: 1324px;
+    margin: 0 auto;
+    background-color: #212529;
+    color: white;
+}
+
+#hover-main-table{
+    color: white;
+    --bs-table-active-color: none;
+    --bs-table-hover-color: none;
+    vertical-align: middle;
+}
+
+#card-main-table{
+    background-color: #212529;
+}
+
+#profile-button{
+    background-color: #445860;
+    border-color: #445860;
+}
+
+#disable-button{
+    border-color: #181c1e;
+    background-color: #181c1e;
+}
+
+#pagination-menu{
+    float: right;
+}
+
+#dropdownMenuLink{
+    border-color: #181c1e;
+    background-color: #181c1e;
+}
+
+#fast-backward{
+    border-color: #181c1e;
+    background-color: #181c1e;
+}
+
+#backward{
+    border-color: #181c1e;
+    background-color: #181c1e;
+}
+
+#current-page{
+    border-color: #181c1e;
+    background-color: #181c1e;
+}
+
+#forward{
+    border-color: #181c1e;
+    background-color: #181c1e;
+}
+
+#fast-forward{
+    border-color: #181c1e;
+    background-color: #181c1e;
+}
+
+#refresh{
+    border-color: #181c1e;
+    background-color: #181c1e;
+    color: white;
+}
+
+#trash{
+    border-color: #181c1e;
+    background-color: #181c1e;
+    color: white;
+}
+
+#enable-button{
+    background-color: #445860;
+    border-color: #445860;
+}
+
+#manage-users-button-reference-menu{
+    border-color: #181c1e;
+    border-radius: 0;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#manage-posts-button-reference-menu{
+    border-color: #181c1e;
+    border-radius: 0;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#manage-comments-button-reference-menu{
+    border-color: #181c1e;
+    border-radius: 0;
+    text-align: left;
+    background-color: #181c1e;
+    color: white;
+    font-size: 16px;
+}
+
+#like-button-active{
+    border-color: #181c1e;
+    background-color: #181c1e;
+    color: white;
+}
+
+#dislike-button-active{
+    border-color: #181c1e;
+    background-color: #181c1e;
+    color: white;
+}
+
+#like-button-inactive{
+
+}
+
+#dislike-button-inactive{
+
+}

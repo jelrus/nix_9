@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{fragments/admin_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Post creator</title>
+</head>
+<body>
+
+<div layout:fragment="admin_content">
+    <div class="card" id="card-body-post-creation">
+        <div class="card-body" id="card-body-user-create-post">
+            <h5 class="card-title">Create post</h5>
+            <hr>
+            <form action="#" th:action="@{/admin/post/create}" th:object="${postDto}"
+                  method="post" enctype="multipart/form-data">
+                <div class="form-group" >
+                    <label for="headerPicturePostCreate">Header Picture</label>
+                    <p></p>
+                    <input type="text" class="form-control" id="headerPicturePostCreate" aria-describedby="headerPicturePostCreate"
+                           placeholder="Put URL of header picture"  th:field="*{headerPic}">
+                </div>
+                <p></p>
+                <div class="form-group">
+                    <label for="titlePostCreate">Title</label>
+                    <p></p>
+                    <input type="text" class="form-control" id="titlePostCreate" aria-describedby="titlePostCreate"
+                           placeholder="Title" th:field="*{title}">
+                </div>
+                <p></p>
+                <div class="form-group" id="form-post">
+                    <label for="text-area-post-create" id="label-post-create">Body</label>
+                    <p></p>
+                    <textarea class="form-control" id="text-area-post-create" rows="14"
+                              th:field="*{body}" placeholder="Put some text here..."></textarea>
+                </div>
+                <p></p>
+
+                <button type="submit" class="btn btn-dark" id="user-edit-profile-submit">Create post</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

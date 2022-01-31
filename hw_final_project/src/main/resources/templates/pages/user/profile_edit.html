@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{fragments/user_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Profile editor</title>
+</head>
+<body>
+
+<div layout:fragment="personal_content">
+
+    <div class="card" id="card-body-editing">
+        <div class="card-body" id="card-body-user-editing">
+            <h5 class="card-title">Edit profile</h5>
+            <hr>
+            <form action="#" th:action="@{/user/profile/edit}" th:object="${user}"
+                  method="post" enctype="multipart/form-data">
+                <div class="form-group" >
+                    <label for="profilePictureEditing">Profile picture</label>
+                    <input type="text" class="form-control" id="profilePictureEditing" aria-describedby="profilePicture"
+                           placeholder="Put URL of profile picture"  th:field="*{profilePic}">
+                </div>
+                <p></p>
+                <div class="form-group" id="form-comment">
+                    <label for="text-area-description" id="label-description"
+                           th:text="'Description'"> </label>
+                    <textarea class="form-control" id="text-area-description" rows="6"
+                              th:field="*{description}" placeholder="Describe yourself"></textarea>
+                </div>
+                <p></p>
+                <div class="form-group">
+                    <label for="firstNameEditing">First name</label>
+                    <p></p>
+                    <input type="text" class="form-control" id="firstNameEditing" aria-describedby="firstName"
+                           placeholder="Enter first name" th:field="*{firstName}">
+                </div>
+                <p></p>
+                <div class="form-group">
+                    <label for="lastNameEditing">Last name</label>
+                    <p></p>
+                    <input type="text" class="form-control" id="lastNameEditing" aria-describedby="lastName"
+                           placeholder="Enter last name" th:field="*{lastName}">
+                </div>
+                <p></p>
+
+                <button type="submit" class="btn btn-dark" id="user-edit-profile-submit">Apply changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

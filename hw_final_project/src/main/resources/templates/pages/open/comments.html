@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/open_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+</head>
+
+<body id="posts-open" style="padding-top: 0">
+<div layout:fragment="open_content" id="fragment-posts-main" style="padding-top: 40px">
+
+    <div class="card-group" id="card-group-main">
+        <div class="cols" id="rating-column">
+            <div class="rows" id="thumb-up">
+                <i class="fa fa-chevron-up" aria-hidden="true"></i>
+            </div>
+            <div class="rows" id="rating-row" th:text="${post.getRating()}"></div>
+            <div class="rows" id="thumb-down">
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="cols" id="general-column">
+            <div class="rows" id="date-row"
+                 th:text="'Posted by ' + ${postFacade.findUserByPostId(post.getId()).getUsername()} + ' on ' + ${post.getCreated()}"></div>
+            <div class="rows" id="title-row" th:text="${post.getTitle()}"></div>
+            <img id="preview" th:src="@{${post.getHeaderPic()}}" alt="No image provided">
+            <div class="rows" id="body-row-full-page" th:text="${post.getBody()}"></div>
+            <div class="row">
+                <div class="column">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </div>
+                <div class="column" id="comment-row" th:text="${comments.size()} + ' Comments'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="comment-card-open" th:if ="${!comments.isEmpty() and comments!=null }">
+        <div class="rows" id="rows-comment-open" th:each="comment : ${comments}">
+            <div class="rows" id="user-row-open">
+                <img class="cols" id="user-pic-open"
+                     th:src="@{${commentFacade.findUserByCommentId(comment.getId())}}">
+                <div class="cols" id="user-comment-row-open"
+                     th:text="${commentFacade.findUserByCommentId(comment.getId()).getUsername()} + ' on ' + ${comment.getCreated()}"></div>
+            </div>
+            <div class="rows" id="comment-body-open" th:text="${comment.getBody()}"></div>
+        </div>
+    </div>
+</div>
+</body>

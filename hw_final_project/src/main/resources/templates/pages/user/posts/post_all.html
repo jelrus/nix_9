@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{fragments/user_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Main</title>
+</head>
+<body id="posts-open" style="padding-top: 0">
+
+<div layout:fragment="personal_content" id="fragment-posts-main" style="padding-top: 40px">
+    <div class="card-group" id="card-group-main" th:each="post : ${allPosts}"
+         th:href="@{'/user/posts/' + ${post.getId()} + '/comments'}"
+         th:if="${!allPosts.isEmpty() and !allPosts.equals(null)}">
+        <div th:id="${'post' + post.getId()}"></div>
+        <div class="cols" id="rating-column">
+
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(-1) or opinionService.opinionStatus(post.getId()).equals(0)}">
+            <div class="rows" id="thumb-up">
+                <a class="btn btn-dark" id="like-button-active"
+                   th:href="@{'/user/like/post=' + ${post.getId()}}"
+                   type="button">
+                    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                </a>
+            </div>
+            </div>
+
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(1)}">
+            <div class="rows" id="like-button-inactive">
+                    <i class="fa fa-chevron-up" aria-hidden="true" style="color: orangered"></i>
+            </div>
+            </div>
+
+            <div class="rows" id="rating-row" th:text="${post.getRating()}"></div>
+
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(1) or opinionService.opinionStatus(post.getId()).equals(0)}">
+            <div class="rows" id="thumb-down">
+                <a class="btn btn-dark" id="dislike-button-active"
+                   th:href="@{'/user/dislike/post=' + ${post.getId()}}"
+                   type="button" th:action="@{'/user/dislike/post=' + ${post.getId()}}">
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </a>
+            </div>
+            </div>
+
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(-1)}">
+                <div class="rows" id="dislike-button-inactive">
+                    <i class="fa fa-chevron-down" aria-hidden="true" style="color: orangered"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="cols" id="general-column">
+            <div class="rows" id="date-row">
+                <div class="cols" id="posted-by" th:text="'Posted by '"></div>
+                <a class="cols" id="user" th:text="${allUsers.findUsernameById(post.getUserId())}"
+                   th:href="@{'/user/profile/' + ${allUsers.findUsernameById(post.getUserId())} + '/posts'}"></a>
+                <div class="cols" id="post-created-date" th:text="' on ' + ${post.getCreated()}"></div>
+            </div>
+            <div class="rows" id="title-row" th:text="${post.getTitle()}"></div>
+            <img id="preview" th:src="@{${post.getHeaderPic()}}" alt="No image provided">
+            <div class="rows" id="body-row" th:text="${post.getBody()}"></div>
+            <div class="row">
+                <div class="column" style="padding-right: 5px;">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </div>
+                <a class="column" id="comment-row" th:text="${commentFacade.findAllCommentsByPostId(post.getId()).size()} + ' Comments'"
+                    th:href="@{'/user/open/posts/' + ${post.getId()} + '/comments#comment-card-open'}">
+                </a>
+                <div class="column" id="divider-open"></div>
+                <div class="column" id="read-full-open">
+                    <a class="btn btn-primary" id="read-open-button"
+                       th:href="@{'/user/open/posts/' + ${post.getId()} + '/comments'}"
+                       type="button">
+                        <i class="fa fa-align-justify" aria-hidden="true"></i>
+                        Read full post
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" th:if="${allPosts.isEmpty() or allPosts.equals(null)}" id="no-posts">
+        <div id="no-posts-span-main">
+            <i class="fa fa-frown-o" id="sad-face" aria-hidden="true"></i>
+            <span th:text="'It seems that you gonna be the first poster here?'" id="no-posts-message"></span>
+            <p></p>
+            <span th:text="'Will you?'" id="no-posts-message2"></span>
+            <a class="btn btn-primary" id="create-post-button"
+               th:href="@{'/user/post/new'}"
+               type="button">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Create post
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

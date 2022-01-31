@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{fragments/admin_layout}">
+<head>
+    <meta charset="utf-8">
+    <title> User's posts </title>
+</head>
+<body id="posts-open" style="padding-top: 0">
+
+<div layout:fragment="admin_content" id="fragment-posts-main" style="padding-top: 50px">
+    <div class="card-group" id="card-group-main" th:each="post : ${posts}"
+         th:href="@{'/admin/posts/' + ${post.getId()} + '/comments'}"
+         th:if="${!posts.isEmpty() and !posts.equals(null)}">
+        <div th:if="${opinionService.opinionStatus(post.getId()).equals(-1) or opinionService.opinionStatus(post.getId()).equals(0)}">
+            <div class="rows" id="thumb-up">
+                <a class="btn btn-dark" id="like-button-active"
+                   th:href="@{'/admin/like/post=' + ${post.getId()}}"
+                   type="button">
+                    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <div th:if="${opinionService.opinionStatus(post.getId()).equals(1)}">
+            <div class="rows" id="like-button-inactive">
+                <i class="fa fa-chevron-up" aria-hidden="true" style="color: orangered"></i>
+            </div>
+        </div>
+
+        <div class="rows" id="rating-row" th:text="${post.getRating()}"></div>
+
+        <div th:if="${opinionService.opinionStatus(post.getId()).equals(1) or opinionService.opinionStatus(post.getId()).equals(0)}">
+            <div class="rows" id="thumb-down">
+                <a class="btn btn-dark" id="dislike-button-active"
+                   th:href="@{'/admin/dislike/post=' + ${post.getId()}}"
+                   type="button" th:action="@{'/user/dislike/post=' + ${post.getId()}}">
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <div th:if="${opinionService.opinionStatus(post.getId()).equals(-1)}">
+            <div class="rows" id="dislike-button-inactive">
+                <i class="fa fa-chevron-down" aria-hidden="true" style="color: orangered"></i>
+            </div>
+        </div>
+
+
+        <div class="cols" id="general-column">
+            <div class="rows" id="date-row">
+                <div class="cols" id="posted-by" th:text="'Posted by '"></div>
+                <a class="cols" id="user" th:text="${user.getUsername()}"
+                   th:href="@{'/admin/profile/' + ${user.getUsername()} + '/posts'}"></a>
+                <div class="cols" id="post-created-date" th:text="' on ' + ${post.getCreated()}"></div>
+            </div>
+            <div class="rows" id="title-row" th:text="${post.getTitle()}"></div>
+            <img id="preview" th:src="@{${post.getHeaderPic()}}" alt="No image provided">
+            <div class="rows" id="body-row" th:text="${post.getBody()}"></div>
+            <div class="row">
+                <div class="column" style="padding-right: 5px;">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </div>
+                <a class="column" id="comment-row" th:text="${post.getComments().size()} + ' Comments'"
+                   th:href="@{'/admin/open/posts/' + ${post.getId()} + '/comments#comment-card-open'}">
+                </a>
+                <div class="column" id="divider-personal-posts2"></div>
+                <div class="column" id="read-full-open">
+                    <a class="btn btn-primary" id="read-open-button"
+                       th:href="@{'/admin/open/posts/' + ${post.getId()} + '/comments'}"
+                       type="button">
+                        <i class="fa fa-align-justify" aria-hidden="true"></i>
+                        Read full post
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" th:if="${posts.isEmpty() or posts.equals(null)}" id="no-posts">
+        <div id="no-posts-span">
+            <i class="fa fa-frown-o" id="sad-face" aria-hidden="true"></i>
+            <span th:text="'This user does not have posts'" id="no-posts-message"></span>
+        </div>
+    </div>
+
+    <div class="card" id="profile-reference">
+        <div class="cols" style="text-align: center">
+            <img class="cols" id="user-pic-reference"
+                 th:src="@{${user.getProfilePic()}}"></div>
+        <div class="cols" id="username-reference"
+             th:text="${user.getUsername()}"></div>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="false" aria-controls="collapseOne" id="collapse-about-button">
+            <i class="fa fa-exclamation-circle" id="exclamation-mark" aria-hidden="true"></i>
+            <a th:text="'About me'"></a>
+        </button>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="cols" id="hello-reference" th:text="'Hi! My name is...'"
+                 th:if="${!user.getFirstName().isBlank() and !user.getFirstName().isEmpty()
+                       and !user.getLastName().isBlank() and !user.getLastName().isEmpty()}"></div>
+            <div class="cols" id="name-reference" th:text="${user.getFirstName() + ' ' + user.getLastName()}"
+                 th:if="${!user.getFirstName().isBlank() and !user.getFirstName().isEmpty()
+                       and !user.getLastName().isBlank() and !user.getLastName().isEmpty()}"></div>
+            <div class="cols" id="lastName-reference" th:text="'I have created this account on...'"></div>
+            <div class="cols" id="created-reference" th:text="${user.getCreated()}"></div>
+            <div class="card-body" id="story-heading-reference" th:text="'Let me tell that...'"
+                 th:if="${!user.getDescription().isBlank() and !user.getDescription().isEmpty()}"></div>
+            <div class="card-body" id="story-reference" th:text="${user.getDescription()}"
+                 th:if="${!user.getDescription().isBlank() and !user.getDescription().isEmpty()}"></div>
+        </div>
+        <a class="btn btn-primary" id="my-posts-button-reference-menu"
+           th:href="@{'/admin/profile/' + ${user.getUsername()} + '/posts'}"
+           type="button">
+            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+            User's posts
+        </a>
+        <a class="btn btn-primary" id="my-comments-button-reference-menu"
+           th:href="@{'/admin/profile/' + ${user.getUsername()} + '/comments'}"
+           type="button">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+            User's comments
+        </a>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="false" aria-controls="collapseOne" id="collapse-statistic-button">
+            <i class="fa fa-line-chart" aria-hidden="true"></i>
+            <a th:text="'Stats'"></a>
+        </button>
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="rows" id="total-posts">
+                <div class="cols" id="total-posts-text0"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                <div class="cols"><a id="total-posts-text1" th:text="'Total posts '"></a></div>
+                <div class="cols" id="total-posts-text2"></div>
+                <div class="cols"><a id="total-posts-text3" th:text="${posts.size()}"></a></div>
+            </div>
+            <div class="rows" id="total-comments">
+                <div class="cols" id="total-comments-text0"><i class="fa fa-commenting" aria-hidden="true"></i></div>
+                <div class="cols"><a id="total-comments-text1" th:text="'Total comments '"></a></div>
+                <div class="cols" id="total-comments-text2"></div>
+                <div class="cols"><a id="total-comments-text3" th:text="${commentFacade.findAllCommentsByUserId(user.getId()).size()}"></a></div>
+            </div>
+            <div class="rows" id="total-likes">
+                <div class="cols" id="total-likes-text0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></div>
+                <div class="cols"><a id="total-likes-text1" th:text="'Total likes '"></a></div>
+                <div class="cols" id="total-likes-text2"></div>
+                <div class="cols"><a id="total-likes-text3" th:text="${opinionService.getTotalLikes(user.getId())}"></a></div>
+            </div>
+            <div class="rows" id="total-dislikes">
+                <div class="cols" id="total-dislikes-text0"><i class="fa fa-thumbs-down" aria-hidden="true"></i></div>
+                <div class="cols"><a id="total-dislikes-text1" th:text="'Total dislikes '"></a></div>
+                <div class="cols" id="total-dislikes-text2"></div>
+                <div class="cols"><a id="total-dislikes-text3" th:text="${opinionService.getTotalDislikes(user.getId())}"></a></div>
+            </div>
+            <div class="rows" id="total-rating">
+                <div class="cols" id="total-rating-text0"><i class="fa fa-star" aria-hidden="true"></i></div>
+                <div class="cols"><a id="total-rating-text1" th:text="'Total rating '"></a></div>
+                <div class="cols" id="total-rating-text2"></div>
+                <div class="cols"><a id="total-rating-text3" th:text="${opinionService.getTotalRating(user.getId())}"></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

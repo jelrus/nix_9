@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/open_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+
+<body id="posts-open" style="padding-top: 0">
+<div layout:fragment="open_content" id="fragment-posts-main" style="padding-top: 40px">
+
+    <div class="card-group" id="card-group-main" th:each="post : ${allPosts}"
+         th:href="@{'/open/posts/' + ${post.getId()} + '/comments'}"
+         th:if="${!allPosts.isEmpty() or !allPosts.equals(null)}">
+        <div class="cols" id="rating-column">
+            <div class="rows" id="thumb-up">
+                <i class="fa fa-chevron-up" aria-hidden="true"></i>
+            </div>
+            <div class="rows" id="rating-row" th:text="${post.getRating()}"></div>
+            <div class="rows" id="thumb-down">
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="cols" id="general-column">
+            <div class="rows" id="date-row"
+                 th:text="'Posted by ' + ${postFacade.findUserByPostId(post.getId()).getUsername()} + ' on ' + ${post.getCreated()}"></div>
+            <div class="rows" id="title-row" th:text="${post.getTitle()}"></div>
+            <img id="preview" th:src="@{${post.getHeaderPic()}}" alt="No image provided">
+            <div class="rows" id="body-row" th:text="${post.getBody()}"></div>
+            <div class="row">
+                <div class="column" style="padding-right: 5px;">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                </div>
+                <a class="column" id="comment-row" th:text="${commentFacade.findAllCommentsByPostId(post.getId()).size()} + ' Comments'"
+                   th:href="@{'/open/posts/' + ${post.getId()} + '/comments#comment-card-open'}">
+                </a>
+                <div class="column" id="divider-open"></div>
+                <div class="column" id="read-full-open">
+                    <a class="btn btn-primary" id="read-open-button"
+                       th:href="@{'/open/posts/' + ${post.getId()} + '/comments'}"
+                       type="button">
+                        <i class="fa fa-align-justify" aria-hidden="true"></i>
+                        Read full post
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" th:if="${allPosts.isEmpty() or allPosts.equals(null)}" id="no-posts">
+        <div id="no-posts-span-main">
+            <i class="fa fa-frown-o" id="sad-face" aria-hidden="true"></i>
+            <span th:text="'It seems that everyone went to another better blog'" id="no-posts-message"></span>
+            <p></p>
+            <a class="btn btn-primary" id="create-post-button"
+               th:href="@{'/registration'}"
+               type="button">
+                <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                Register
+            </a>
+            <span th:text="'  or '" id="no-posts-message2"></span>
+            <a class="btn btn-primary" id="create-post-button2"
+               th:href="@{'/login'}"
+               type="button">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                Login
+            </a>
+            <p></p>
+            <span th:text="'to do something'" id="no-posts-message3"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

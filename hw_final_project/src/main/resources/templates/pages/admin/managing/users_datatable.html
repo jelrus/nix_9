@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>All users</title>
+</head>
+<body>
+
+
+<div layout:fragment="data_table_content">
+        <tr th:each="user, iter : ${pageData.getItems()}">
+            <td th:text="${iter.count}"></td>
+            <td th:text="${user.getCreated()}"></td>
+            <td th:text="${user.getUpdated()}"></td>
+            <td>
+                <img th:src="@{${user.getProfilePic()}}" width="80" height="80"/>
+            </td>
+            <td th:text="${user.getUsername()}"></td>
+            <td>
+                <a type="button" th:href="@{'/admin/profile/' + ${user.getUsername()} + '/posts'}"
+                   class="btn btn-primary" id="profile-button">profile</a>
+            </td>
+            <td>
+                <div th:if="${!user.getUsername().equals(current.getUsername())}">
+                <a  type="button" th:href="@{'/admin/profile/manage/disable/' + ${user.getUsername()}}"
+                   class="btn btn-danger" id="disable-button" th:if="${user.getEnabled()==true}">disable</a>
+                <a  type="button" th:href="@{'/admin/profile/manage/disable/' + ${user.getUsername()}}"
+                    class="btn btn-danger" id="enable-button" th:if="${user.getEnabled()==false}">enable</a>
+                </div>
+            </td>
+        </tr>
+</div>
+
+</body>
+</html>

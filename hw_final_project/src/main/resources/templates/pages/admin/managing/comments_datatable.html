@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>All comments</title>
+</head>
+<body>
+
+
+<div layout:fragment="data_table_content">
+    <tr th:each="comment, iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${comment.getCreated()}"></td>
+        <td th:text="${comment.getUpdated()}"></td>
+        <td th:text="${comment.getBody()}"></td>
+        <td>
+            <a  type="button" th:href="@{'/admin/profile/'+ ${allUsers.findUsernameById(comment.getUserId())} + '/comments'}"
+                class="btn btn-danger" id="profile-button" th:text="${allUsers.findUsernameById(comment.getUserId())}"></a>
+        </td>
+        <td>
+                <a  type="button" th:href="@{'/admin/profile/manage/hide/comment=' + ${comment.getId()}}"
+                    class="btn btn-danger" id="disable-button" th:if="${comment.getVisible()==true}">hide</a>
+                <a  type="button" th:href="@{'/admin/profile/manage/hide/comment=' + ${comment.getId()}}"
+                    class="btn btn-danger" id="enable-button" th:if="${comment.getVisible()==false}">show</a>
+        </td>
+    </tr>
+</div>
+
+</body>
+</html>

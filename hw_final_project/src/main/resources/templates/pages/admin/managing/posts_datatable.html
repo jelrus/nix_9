@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table_layout}">
+<head>
+    <meta charset="utf-8">
+    <title>All posts</title>
+</head>
+<body>
+
+
+<div layout:fragment="data_table_content">
+    <tr th:each="post, iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${post.getCreated()}"></td>
+        <td th:text="${post.getUpdated()}"></td>
+        <td>
+            <img th:src="@{${post.getHeaderPic()}}" width="80" height="80"/>
+        </td>
+        <td th:text="${post.getTitle()}"></td>
+        <td th:text="${post.getBody()}"></td>
+        <td>
+            <a type="button" th:href="@{'/admin/profile/' + ${allUsers.findUsernameById(post.getUserId())} + '/posts'}"
+               class="btn btn-primary" id="profile-button" th:text="${allUsers.findUsernameById(post.getUserId())}"></a>
+        </td>
+        <td>
+            <div>
+                <a  type="button" th:href="@{'/admin/profile/manage/hide/post=' + ${post.getId()}}"
+                    class="btn btn-danger" id="disable-button" th:if="${post.getVisible()==true}">hide</a>
+                <a  type="button" th:href="@{'/admin/profile/manage/hide/post=' + ${post.getId()}}"
+                    class="btn btn-danger" id="enable-button" th:if="${post.getVisible()==false}">show</a>
+            </div>
+        </td>
+    </tr>
+</div>
+
+</body>
+</html>
