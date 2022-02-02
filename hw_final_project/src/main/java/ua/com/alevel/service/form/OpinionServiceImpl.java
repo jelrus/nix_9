@@ -1,5 +1,7 @@
 package ua.com.alevel.service.form;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,8 @@ public class OpinionServiceImpl implements OpinionService {
     private final PostService postService;
     private final OpinionRepository opinionRepository;
 
+    private static final Logger LOGGER_INFO = LoggerFactory.getLogger("info");
+
     public OpinionServiceImpl(PostService postService, OpinionRepository opinionRepository) {
         this.postService = postService;
         this.opinionRepository = opinionRepository;
@@ -28,8 +32,8 @@ public class OpinionServiceImpl implements OpinionService {
     public Long getNegativeOpinionByPost(Long postId) {
         List<Opinion> allOpinions = findOpinionsByPostId(postId);
         long count = 0;
-        for(Opinion op: allOpinions){
-            if (op.getOpinionType().getValue().equals(-1)){
+        for (Opinion op : allOpinions) {
+            if (op.getOpinionType().getValue().equals(-1)) {
                 count--;
             }
         }
@@ -41,8 +45,8 @@ public class OpinionServiceImpl implements OpinionService {
     public Long getPositiveOpinionByPost(Long postId) {
         List<Opinion> allOpinions = findOpinionsByPostId(postId);
         long count = 0;
-        for(Opinion op: allOpinions){
-            if (op.getOpinionType().getValue().equals(1)){
+        for (Opinion op : allOpinions) {
+            if (op.getOpinionType().getValue().equals(1)) {
                 count++;
             }
         }
@@ -59,11 +63,12 @@ public class OpinionServiceImpl implements OpinionService {
     @Override
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public void makeNegativeOpinion(Long userId, Long postId) {
-       Post post = postService.findById(postId).get();
-       long dislikes = post.getDislikes() - 1;
-       post.setDislikes(dislikes);
-        post.setRating(post.getLikes()+post.getDislikes());
-       opinionRepository.save(createNegativeOpinion(userId, postId));
+        Post post = postService.findById(postId).get();
+        long dislikes = post.getDislikes() - 1;
+        post.setDislikes(dislikes);
+        post.setRating(post.getLikes() + post.getDislikes());
+        opinionRepository.save(createNegativeOpinion(userId, postId));
+        LOGGER_INFO.info("User [" + userId + "] disliked post [" + postId + "]");
     }
 
     @Override
@@ -72,11 +77,12 @@ public class OpinionServiceImpl implements OpinionService {
         Post post = postService.findById(postId).get();
         long likes = post.getLikes() + 1;
         post.setLikes(likes);
-        post.setRating(post.getLikes()+post.getDislikes());
+        post.setRating(post.getLikes() + post.getDislikes());
         opinionRepository.save(createPositiveOpinion(userId, postId));
+        LOGGER_INFO.info("User [" + userId + "] liked post [" + postId + "]");
     }
 
-    private Opinion createNegativeOpinion(Long userId, Long postId){
+    private Opinion createNegativeOpinion(Long userId, Long postId) {
         Opinion opinion = new Opinion();
         opinion.setOpinionType(OpinionType.NEGATIVE);
         opinion.setPostId(postId);
@@ -84,7 +90,7 @@ public class OpinionServiceImpl implements OpinionService {
         return opinion;
     }
 
-    private Opinion createPositiveOpinion(Long userId, Long postId){
+    private Opinion createPositiveOpinion(Long userId, Long postId) {
         Opinion opinion = new Opinion();
         opinion.setOpinionType(OpinionType.POSITIVE);
         opinion.setPostId(postId);
@@ -96,8 +102,8 @@ public class OpinionServiceImpl implements OpinionService {
     @Transactional
     public LinkedList<Opinion> findOpinionsByPostId(Long postId) {
         LinkedList<Opinion> opinions = new LinkedList<>();
-        for(Opinion opinion: opinionRepository.findAll()){
-            if (opinion.getPostId().equals(postId)){
+        for (Opinion opinion : opinionRepository.findAll()) {
+            if (opinion.getPostId().equals(postId)) {
                 opinions.add(opinion);
             }
         }
@@ -113,12 +119,12 @@ public class OpinionServiceImpl implements OpinionService {
     @Override
     @Transactional
     public Integer opinionStatus(Long postId) {
-        return findOpinionsByPostId(postId).get(findOpinionsByPostId(postId).size()-1).getOpinionType().getValue();
+        return findOpinionsByPostId(postId).get(findOpinionsByPostId(postId).size() - 1).getOpinionType().getValue();
     }
 
     @Override
     @Transactional
-    public List<Opinion> findAll(){
+    public List<Opinion> findAll() {
         return new LinkedList<>(opinionRepository.findAll());
     }
 

@@ -1,5 +1,7 @@
 package ua.com.alevel.service.form;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +26,10 @@ public class PostServiceImpl implements PostService {
     private final UserRepository userRepository;
     private final BaseCrudRepository<User, UserRepository> baseUserRepository;
 
+    private static final Logger LOGGER_INFO = LoggerFactory.getLogger("info");
+    private static final Logger LOGGER_WARNING = LoggerFactory.getLogger("warn");
+    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");
+
     public PostServiceImpl(PostRepository postRepository,
                            BaseCrudRepository<Post, PostRepository> basePostRepository,
                            UserRepository userRepository,
@@ -37,25 +43,31 @@ public class PostServiceImpl implements PostService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void create(Post post) {
+        LOGGER_INFO.info("Post creating has been started");
         post.setLikes(0L);
         post.setDislikes(0L);
         post.setRating(0L);
         basePostRepository.create(postRepository, post);
+        LOGGER_INFO.info("Post [" + post.getId() + "] has been created");
     }
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void update(Post post) {
+        LOGGER_INFO.info("Post [" + post.getId() + "] updating has been started");
         post.setLikes(post.getLikes());
         post.setDislikes(post.getDislikes());
         post.setRating(post.getRating());
         basePostRepository.update(postRepository, post);
+        LOGGER_INFO.info("Post [" + post.getId() + "] has been updated");
     }
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void delete(Long id) {
+        LOGGER_WARNING.warn("Post [" + id + "] deleting started");
         basePostRepository.delete(postRepository, id);
+        LOGGER_WARNING.warn("Post [" + id + "] has been deleted");
     }
 
     @Override

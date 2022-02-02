@@ -16,6 +16,8 @@ import ua.com.alevel.persistence.repository.form.CommentRepository;
 import ua.com.alevel.persistence.repository.form.PostRepository;
 import ua.com.alevel.persistence.repository.user.UserRepository;
 import ua.com.alevel.service.AdminService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +32,10 @@ public class AdminServiceImpl implements AdminService {
     private final BaseCrudRepository<Post, PostRepository> basePostRepository;
     private final CommentRepository commentRepository;
     private final BaseCrudRepository<Comment, CommentRepository> baseCommentRepository;
+
+    private static final Logger LOGGER_INFO = LoggerFactory.getLogger("info");
+    private static final Logger LOGGER_WARNING = LoggerFactory.getLogger("warn");
+    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");
 
     public AdminServiceImpl(BCryptPasswordEncoder bCryptPasswordEncoder,
                             BaseCrudRepository<User, UserRepository> baseUserRepository,
@@ -48,24 +54,31 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ, rollbackFor = Exception.class)
-    public void create(User standardUser) {
-        if (userRepository.existsByUsername(standardUser.getUsername())) {
+    public void create(User admin) {
+        LOGGER_INFO.info("Admin creating has been started");
+        if (userRepository.existsByUsername(admin.getUsername())) {
+            LOGGER_ERROR.error("User [" + admin.getId() + "] is already exist");
             throw new EntityExistException("this user is exist");
         }
-        standardUser.setPassword(bCryptPasswordEncoder.encode(standardUser.getPassword()));
-        baseUserRepository.create(userRepository, standardUser);
+        admin.setPassword(bCryptPasswordEncoder.encode(admin.getPassword()));
+        baseUserRepository.create(userRepository, admin);
+        LOGGER_INFO.info("Admin [" + admin.getId() + "] has been created");
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ, rollbackFor = Exception.class)
-    public void update(User standardUser) {
-        baseUserRepository.update(userRepository, standardUser);
+    public void update(User admin) {
+        LOGGER_INFO.info("Admin [" + admin.getId() + "] updating has been started");
+        baseUserRepository.update(userRepository, admin);
+        LOGGER_INFO.info("Admin [" + admin.getId() + "] updating has been completed");
     }
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void delete(Long id) {
+        LOGGER_WARNING.warn("Admin [" + id +"] deleting has been started");
         baseUserRepository.delete(userRepository, id);
+        LOGGER_WARNING.warn("Admin [" + id + "] has been deleted");
     }
 
     @Override
@@ -91,25 +104,30 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void createPost(String username, Post post) {
+        LOGGER_INFO.info("Post creating by User [" + username + "] has been started");
         User user = baseUserRepository.findById(userRepository, getIdByUsername(username)).get();
         post.setUser(user);
         basePostRepository.create(postRepository, post);
         user.getPosts().add(post);
         baseUserRepository.update(userRepository, user);
+        LOGGER_INFO.info("Post [" + post.getId() + "] by User [" + username + "] has been created");
     }
 
     @Override
     public void deletePost(String username, Long postId) {
+        LOGGER_WARNING.warn("Post [" + postId + "] deleting by User [" + username + "] has been started");
         User user = baseUserRepository.findById(userRepository, getIdByUsername(username)).get();
         Post post = basePostRepository.findById(postRepository, postId).get();
         user.getPosts().remove(post);
         basePostRepository.delete(postRepository, postId);
+        LOGGER_WARNING.warn("Post [" + postId + "] by User [" + username + "] has been removed");
     }
 
     @Override
-    public void createComment(String username, Long postId, Comment comment) {
+    public void createComment(String username, Long commentId, Comment comment) {
+        LOGGER_INFO.info("Comment [" + commentId + "] by User [" + username + "] creating has been started");
         User user = baseUserRepository.findById(userRepository, getIdByUsername(username)).get();
-        Post post = basePostRepository.findById(postRepository, postId).get();
+        Post post = basePostRepository.findById(postRepository, commentId).get();
         comment.setPost(post);
         comment.setUser(user);
         baseCommentRepository.create(commentRepository, comment);
@@ -117,37 +135,46 @@ public class AdminServiceImpl implements AdminService {
         post.getComments().add(comment);
         basePostRepository.update(postRepository, post);
         baseUserRepository.update(userRepository, user);
+        LOGGER_INFO.info("Comment [" + commentId + "] by User [" + username + "] has been created");
     }
 
     @Override
     public void deleteComment(String username, Long postId, Long commentId) {
+        LOGGER_WARNING.warn("Comment [" + commentId + "] by User [" + username + "] deleting has been started");
         User user = baseUserRepository.findById(userRepository, getIdByUsername(username)).get();
         Post post = basePostRepository.findById(postRepository, postId).get();
         Comment comment = baseCommentRepository.findById(commentRepository, commentId).get();
         user.getComments().remove(comment);
         post.getComments().remove(comment);
         baseCommentRepository.delete(commentRepository, commentId);
+        LOGGER_WARNING.warn("Comment [" + commentId + "] by User [" + username + "] has been deleted");
     }
 
     @Override
     public void disablePost(Long postId) {
+        LOGGER_WARNING.warn("Post [" + postId + "] disabling has been started");
         Post post = basePostRepository.findById(postRepository, postId).get();
         post.setVisible(!post.getVisible().equals(true));
         basePostRepository.update(postRepository, post);
+        LOGGER_WARNING.warn("Comment [" + postId + "] has been disabled");
     }
 
     @Override
     public void disableComment(Long commentId) {
+        LOGGER_WARNING.warn("Post [" + commentId + "] disabling has been started");
         Comment comment = baseCommentRepository.findById(commentRepository, commentId).get();
         comment.setVisible(!comment.getVisible().equals(true));
         baseCommentRepository.update(commentRepository, comment);
+        LOGGER_WARNING.warn("Comment [" + commentId + "] has been disabled");
     }
 
     @Override
     public void disableUser(Long userId) {
+        LOGGER_WARNING.warn("User [" + userId + "] disabling has been started");
         User user = baseUserRepository.findById(userRepository, userId).get();
         user.setEnabled(!user.getEnabled().equals(true));
         baseUserRepository.update(userRepository, user);
+        LOGGER_WARNING.warn("User [" + userId + "] has been disabled");
     }
 
     @Override

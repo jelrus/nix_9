@@ -1,5 +1,7 @@
 package ua.com.alevel.service.form;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +30,9 @@ public class CommentServiceImpl implements CommentService {
     private final PostRepository postRepository;
     private final BaseCrudRepository<Post, PostRepository> basePostRepository;
 
+    private static final Logger LOGGER_INFO = LoggerFactory.getLogger("info");
+    private static final Logger LOGGER_WARNING = LoggerFactory.getLogger("warn");
+
     public CommentServiceImpl(CommentRepository commentRepository,
                               BaseCrudRepository<Comment, CommentRepository> baseCommentRepository,
                               UserRepository userRepository,
@@ -45,19 +50,25 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void create(Comment comment) {
+        LOGGER_INFO.info("Comment creating has been started");
         baseCommentRepository.create(commentRepository, comment);
+        LOGGER_INFO.info("Comment [" + comment.getId() + "] has been created");
     }
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void update(Comment comment) {
+        LOGGER_INFO.info("Comment [" + comment.getId() + "] updating has been started");
         baseCommentRepository.update(commentRepository, comment);
+        LOGGER_INFO.info("Comment [" + comment.getId() + "] has been updated");
     }
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void delete(Long id) {
+        LOGGER_WARNING.warn("Comment [" + id + "] deleting started");
         baseCommentRepository.delete(commentRepository, id);
+        LOGGER_WARNING.warn("Comment [" + id + "] has been deleted");
     }
 
     @Override
