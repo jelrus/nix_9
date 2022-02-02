@@ -106,7 +106,7 @@
                        and !user.getLastName().isBlank() and !user.getLastName().isEmpty()}"></div>
             <div class="cols" id="lastName-reference" th:text="'I have created this account on...'"></div>
             <div class="cols" id="created-reference" th:text="${user.getCreated()}"></div>
-            <div class="card-body" id="story-heading-reference" th:text="'Let me tell that...'"
+            <div class="card-body" id="story-heading-reference" th:text="'Let me tell that I am...'"
                  th:if="${!user.getDescription().isBlank() and !user.getDescription().isEmpty()}"></div>
             <div class="card-body" id="story-reference" th:text="${user.getDescription()}"
                  th:if="${!user.getDescription().isBlank() and !user.getDescription().isEmpty()}"></div>

@@ -13,21 +13,22 @@
 
 <div layout:fragment="admin_content" id="fragment-posts-main" style="padding-top: 40px">
     <div class="card-group" id="card-group-main">
-        <div th:if="${opinionService.opinionStatus(post.getId()).equals(-1) or opinionService.opinionStatus(post.getId()).equals(0)}">
-            <div class="rows" id="thumb-up">
-                <a class="btn btn-dark" id="like-button-active"
-                   th:href="@{'/admin/like/post=' + ${post.getId()}}"
-                   type="button">
-                    <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                </a>
+        <div class="cols" id="rating-column">
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(-1) or opinionService.opinionStatus(post.getId()).equals(0)}">
+                <div class="rows" id="thumb-up">
+                    <a class="btn btn-dark" id="like-button-active"
+                       th:href="@{'/admin/like/post=' + ${post.getId()}}"
+                       type="button">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div th:if="${opinionService.opinionStatus(post.getId()).equals(1)}">
-            <div class="rows" id="like-button-inactive">
-                <i class="fa fa-chevron-up" aria-hidden="true" style="color: orangered"></i>
+            <div th:if="${opinionService.opinionStatus(post.getId()).equals(1)}">
+                <div class="rows" id="like-button-inactive">
+                    <i class="fa fa-chevron-up" aria-hidden="true" style="color: orangered"></i>
+                </div>
             </div>
-        </div>
 
         <div class="rows" id="rating-row" th:text="${post.getRating()}"></div>
 
